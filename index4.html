@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Describir los componentes arquitectónicos principales de Azure</h2>
+
+    <h2>Introducción</h2>
+    <p>En este módulo, se presentarán los principales componentes arquitectónicos de Azure. Obtendrás información sobre la organización física de Azure: centros de datos, zonas de disponibilidad y regiones; y también sobre la estructura organizativa de Azure: recursos y grupos de recursos, suscripciones y grupos de administración.</p>
+    <h3>Objetivos de aprendizaje</h3>
+
+    <ul>
+        <li>Describir las regiones de Azure, los pares de regiones y las regiones soberanas.</li>
+        <li>Describir las zonas de disponibilidad.</li>
+        <li>Describir los centros de datos de Azure.</li>
+        <li>Describir los recursos y grupos de recursos de Azure.</li>
+        <li>Describir las suscripciones.</li>
+        <li>Describir los grupos de administración.</li>
+        <li>Describir la jerarquía de grupos de recursos, suscripciones y grupos de administración.</li>
+    </ul>
+
+    <h2>Qué es Microsoft Azure</h2>
+    <a href="https://www.microsoft.com/es-es/videoplayer/embed/RWEsag?postJsllMsg=true&autoCaptions=es-es"> video</a>
+    <p>Azure es un conjunto de servicios en la nube en expansión constante que le ayudan a cumplir los desafíos empresariales actuales y futuros. Azure le ofrece la libertad de compilar, administrar e implementar aplicaciones en una red global masiva mediante sus herramientas y plataformas favoritas.</p>
+
+    <h3>¿Qué ofrece Azure?</h3>
+    <p>Innovación ilimitada. Cree aplicaciones inteligentes y soluciones con tecnología, herramientas y servicios avanzados para llevar su negocio al siguiente nivel. Unifique sin problemas su tecnología para simplificar la administración de plataformas y ofrecer innovaciones de forma eficaz y segura en una nube de confianza.</p>
+
+    <ul>
+        <li>Haga realidad las ideas: Cree una plataforma de confianza para hacer avanzar su organización con inteligencia artificial y servicios en la nube líderes del sector.</li>
+        <li>Unifique sin problemas: Administre de forma eficaz toda la infraestructura, los datos, los análisis y las soluciones de inteligencia artificial en una plataforma integrada.</li>
+        <li>Innove en la confianza: Utilice la tecnología de confianza de un partner dedicado a la seguridad y la responsabilidad.</li>
+    </ul>
+
+    <h3>¿Qué puedo hacer con Azure?</h3>
+    <p>Azure proporciona más de 100 servicios que permiten hacer todo tipo de cosas: desde ejecutar las aplicaciones existentes en máquinas virtuales hasta explorar nuevos paradigmas de software, como bots inteligentes y realidad mixta.
+
+    Muchos equipos comienzan a explorar la nube mediante la migración de sus aplicaciones existentes a máquinas virtuales (VM) que se ejecutan en Azure. Aunque este es un buen comienzo, la nube es mucho más que un lugar diferente donde ejecutar las máquinas virtuales.
+    
+    Por ejemplo, Azure proporciona servicios de inteligencia artificial (IA) y aprendizaje automático (ML) que pueden comunicarse de forma natural con los usuarios mediante la vista, el oído y la voz. También facilita soluciones de almacenamiento que crecen dinámicamente para dar cabida a grandes cantidades de datos. Los servicios de Azure permiten soluciones que no son factibles sin la potencia de la nube.</p>
+
+    <h2>Introducción a las cuentas de Azure</h2>
+
+    <p>Para crear y usar los servicios de Azure, necesita una suscripción de Azure. Al completar los módulos de Microsoft Learn, la mayoría de las veces se crea una suscripción temporal de forma automática, que se ejecuta en un entorno denominado espacio aislado de Microsoft Learn. Cuando trabajas con tus propias aplicaciones y necesidades comerciales, tienes que registrar una cuenta de Azure y se te creará automáticamente una suscripción para ti. Después de crear una cuenta de Azure, puedes crear suscripciones adicionales. Por ejemplo, es posible que la empresa use una única cuenta de Azure para el negocio y suscripciones independientes para los departamentos de desarrollo, marketing y ventas. Una vez que has creado una suscripción de Azure, puedes empezar a crear recursos de Azure dentro de cada suscripción.</p>
+    
+    <img src="./img/4/1.png" alt="" style="width: 400px;">
+
+    <p>Si no estás familiarizado con Azure, puedes registrarse para obtener una cuenta gratuita en el sitio web de Azure y, de este modo, empezar a explorar sin coste alguno. Cuando estés listo, puedes optar por actualizar la cuenta gratuita. También puedes crear una suscripción que te permita comenzar a pagar por los servicios de Azure que necesitas y a los que no puedes acceder con una cuenta gratuita.</p>
+
+    
+    <h3>Creación de una cuenta de Azure</h3>
+    
+    <p>Para comprar el acceso a Azure directamente desde Microsoft, regístrate en el sitio web de Azure o hágalo a través de un representante de Microsoft. También puedes comprar el acceso a Azure a través de un partner de Microsoft. Los partners del programa Proveedor de soluciones en la nube ofrecen una amplia gama de soluciones en la nube administradas y completas para Azure.</p>
+    
+    <a href="https://www.microsoft.com/es-es/videoplayer/embed/RWK1QU?postJsllMsg=true&autoCaptions=es-es">video</a>
+
+    <h3>¿Qué es la cuenta gratuita de Azure?</h3>
+    <ul>
+        <li>Acceso gratuito a productos populares de Azure durante 12 meses.</li>
+        <li>Crédito para gastar durante los primeros 30 días.</li>
+        <li>Acceso a más de 25 productos que siempre son gratuitos.</li>
+    </ul>
+
+    <p>La cuenta gratuita de Azure ofrece de forma óptima un comienzo y exploración a los nuevos usuarios. Para registrarse, necesita un número de teléfono, una tarjeta de crédito y una cuenta de Microsoft o de GitHub. La información de la tarjeta de crédito solo se usa para la verificación de identidad. No se te cobrará por ningún servicio hasta que actualice a una suscripción de pago.</p>
+
+
+    <h3>¿Qué es la cuenta de estudiante gratuita de Azure?</h3>
+
+    <ul>
+        <li>Acceso gratuito a determinados servicios de Azure durante 12 meses.</li>
+        <li>Un crédito para usar en los primeros 12 meses.</li>
+        <li>Acceso gratuito a determinadas herramientas de desarrollo de software.</li>
+    </ul>
+
+    <p>La cuenta de estudiante gratuita de Azure es una oferta para estudiantes que ofrece 100 USD de crédito y herramientas de desarrollo gratuitas. Además, puedes registrarse sin tarjeta de crédito.</p>
+
+    <h3>¿Qué es el espacio aislado de Microsoft Learn?</h3>
+    <p>En muchos de los ejercicios de Learn se usa una tecnología denominada espacio aislado, que crea una suscripción temporal que se agrega a la cuenta de Azure. Esta suscripción temporal le permite crear recursos de Azure para la duración de un módulo de Learn. Learn limpia de forma automática los recursos temporales una vez que hayas completado el módulo.
+
+    Cuando completas un módulo de Learn, puedes usar la suscripción personal para finalizar los ejercicios que incluye. Pero el espacio aislado es el método preferido, ya que permite crear y probar recursos de Azure sin costo alguno.
+    
+    </p>
+
+    <h2>Ejercicio: Exploración del espacio aislado de Learn</h2>
+
+    <p>En este ejercicio explorarás el espacio aislado de Learn. Puedes interactuar con el espacio aislado de Learn de tres maneras diferentes. Durante los ejercicios, se te proporcionarán instrucciones para al menos uno de los métodos siguientes.
+
+    Para empezar, activa el espacio aislado de Learn. Después, investigarás cada uno de los métodos para trabajar en el espacio aislado de Learn.</p>
+
+    <h3>Activación del espacio aislado de Learn</h3>
+    <p>Si todavía no lo has hecho, usa el botón Activar espacio aislado anterior para activar el espacio aislado de Learn.
+
+    Si recibes un aviso que indica que Microsoft Learn necesita tu permiso para crear un recurso de Azure, usa el botón Revisar permiso para revisar y aceptar los permisos. Una vez que apruebes los permisos, el espacio aislado puede tardar unos minutos en activarse.</p>
+
+    <h3>Tarea 1: Uso de la CLI de PowerShell</h3>
+    <p>Una vez que se inicie el espacio aislado, la mitad de la pantalla estará en modo de interfaz de línea de comandos (CLI) de PowerShell. Si estás familiarizado con PowerShell, puedes administrar el entorno de Azure mediante comandos de PowerShell.</p>
+    <img src="./img/4/2.png" alt="">
+    <pre>
+        Sugerencia
+
+        Puedes saber que estás en modo de PowerShell por las letras "PS" que aparecen delante del directorio 
+        en la línea de comandos.
+    </pre>
+
+    <p>Usa el comando Get-date de PowerShell para obtener la fecha y hora actuales.</p>
+
+    <pre>
+        Get-date
+    </pre>
+
+    <p>La mayoría de los comandos específicos de Azure comenzarán con las letras az. El comando Get-date que acaba de ejecutar es específico de PowerShell. Ahora se probará un comando de Azure para comprobar qué versión de la CLI usa en este momento.</p>
+
+    <pre>
+        az version
+    </pre>
+
+    <h3>Tarea 2: Uso de la CLI de BASH</h3>
+    <p>Si estás más familiarizado con BASH, puedes usar el comando BASH en su lugar mediante el cambio a la CLI de BASH.
+
+    Escribe bash para cambiar a la CLI de BASH.</p>
+
+    <pre>
+        bash
+    </pre>
+    <img src="./img/4/3.png" alt="">
+
+    <pre>
+        Sugerencia
+
+        Puedes saber que estás en modo BASH por el nombre de usuario que se muestra en la línea de comandos. 
+        Será nombre_de_usuario@azure.
+    </pre>
+    <p>De nuevo, usa el comando Get-date para obtener la fecha y hora actuales.</p>
+
+    <p>Se produce un error porque Get-date es un comando específico de PowerShell.</p>
+
+    <img src="./img/4/4.png" alt="">
+
+    <p>Use'a el comando date para obtener la fecha y hora actuales.</p>
+
+    <pre>
+        date
+    </pre>
+
+    <p>Al igual que en el modo PowerShell de la CLI, puedes usar las letras az para iniciar un comando de Azure en el modo BASH. Intenta ejecutar una actualización en la CLI con az upgrade.</p>
+
+    <pre>
+        az upgrade
+    </pre>
+
+    <p>Puedes volver al modo de PowerShell si escribe pwsh en la línea de comandos de BASH.</p>
+
+    <h3>Tarea 3: Uso del modo interactivo de la CLI de Azure</h3>
+    <p>Otra manera de interactuar consiste en usar el modo interactivo de la CLI de Azure. Esto cambia el comportamiento de la CLI para parecerse más a un entorno de desarrollo integrado (IDE). El modo interactivo proporciona autocompletar, descripciones de comandos e incluso ejemplos. Si no estás familiarizado con BASH y PowerShell, pero quiere usar la línea de comandos, el modo interactivo puede ayudarte.
+
+    Escribe az interactive para entrar en modo interactivo.</p>
+
+    <pre>
+        az interactive
+    </pre>
+
+    <p>Decide si quiere enviar datos de telemetría y escribe SÍ o NO.
+
+    Es posible que tengas que esperar uno o dos minutos para permitir que el modo interactivo se inicialice por completo. Después, escribe la letra "a" y la finalización automática debería empezar a funcionar. Si la finalización automática no funciona, borra lo que has escrito, espera un poco más y vuelve a intentarlo.</p>
+
+    <img src="./img/4/5.png" alt="">
+
+    <p>Una vez que se inicialice, puedes usar las teclas de dirección o tabulaciones para ayudar a completar los comandos. El modo interactivo está configurado específicamente para Azure, por lo que no es necesario escribir az para iniciar un comando (pero puedes hacerlo si quieres o tienes la costumbre de usarlo). Vuelve a intentar los comandos upgrade o version, pero esta vez sin az delante.</p>
+
+    <p>Los comandos deben haber funcionado igual que antes y generar los mismos resultados. Usa el comando exit para salir del modo interactivo.</p>
+
+    <pre>
+        exit
+    </pre>
+
+    <h3>Tarea 4: Uso de Azure Portal</h3>
+    <p>Durante los ejercicios del espacio aislado también tendrás la opción de usar Azure Portal. Debes usar el vínculo proporcionado en el ejercicio para acceder a Azure Portal. Con el vínculo proporcionado, en lugar de abrir el portal personalmente, se asegura de usar la suscripción correcta y poder completar el ejercicio como quieras.
+
+    Inicie sesión en Azure Portal para comprobar la interfaz web de Azure. Una vez en el portal, puedes ver todos los servicios que ofrece Azure, así como echar un vistazo a los grupos de recursos, etc.</p>
+
+    <h2>Descripción de la infraestructura física de Azure</h2>
+    <p>A lo largo del recorrido con Microsoft Azure, escucharás y usarás términos como regiones, zonas de disponibilidad, recursos, suscripciones, etc. Este módulo se centra en los principales componentes arquitectónicos de Azure. Los componentes arquitectónicos principales de Azure se pueden dividir en dos grandes grupos: la infraestructura física y la infraestructura de administración.</p>
+
+    <h3>Infraestructura física</h3>
+    <p>La infraestructura física de Azure comienza con los centros de datos. Conceptualmente, los centros de datos son iguales que los grandes centros de datos corporativos. Son instalaciones con recursos organizados en bastidores, con potencia dedicada, refrigeración e infraestructura de red.
+
+    Como proveedor de nube global, Azure tiene centros de datos en todo el mundo. Pero estos centros de datos individuales no son accesibles directamente. Los centros de datos se agrupan en regiones de Azure o Azure Availability Zones, están diseñados para ayudarte a lograr resistencia y confiabilidad para las cargas de trabajo críticas para la empresa.
+    
+    El sitio de infraestructura global le ofrece la oportunidad de explorar de manera interactiva la infraestructura subyacente de Azure.</p>
+
+    <h3>Regions</h3>
+    <p>Una región es un área geográfica del planeta que contiene al menos un centro de datos, aunque podrían ser varios cercanos y conectados mediante una red de baja latencia. Azure asigna y controla los recursos de forma inteligente dentro de cada región para garantizar que las cargas de trabajo están bien compensadas.
+
+    Al implementar un recurso en Azure, es habitual tener que elegir la región en la que quiere que se implemente el recurso.</p>
+
+    <pre>
+        Nota
+
+        Algunos servicios o características de las máquinas virtuales (VM) solo están disponibles en determinadas regiones, 
+        como, por ejemplo, tipos de almacenamiento o tamaños de VM específicos. 
+        También hay algunos servicios globales de Azure que no requieren que seleccione una región concreta, 
+        como Microsoft Entra ID, Azure Traffic Manager o Azure DNS.
+    </pre>
+
+    <h3>Availability Zones</h3>
+    <p>Las zonas de disponibilidad son centros de datos separados físicamente dentro de una región de Azure. Cada zona de disponibilidad consta de uno o varios centros de datos equipados con alimentación, refrigeración y redes independientes. Una zona de disponibilidad se configura para constituir un límite de aislamiento. Si una zona deja de funcionar, la otra continúa trabajando. Las zonas de disponibilidad están conectadas a través de redes de fibra óptica de alta velocidad privadas.</p>
+
+    <img src="./img/4/6.png" alt="">
+
+    <pre>
+        Importante
+
+        Para garantizar la resistencia, se configuran un mínimo de tres zonas de disponibilidad independientes en 
+        todas las regiones habilitadas. Pero no todas las regiones de Azure admiten actualmente las zonas de disponibilidad.
+    </pre>
+
+    <h3>Uso de las zonas de disponibilidad en sus aplicaciones</h3>
+
+    <p>A fin de proteger la información en caso de error, deberá asegurarse de que los servicios y datos son redundantes. Si hospeda su infraestructura, configurar su propia redundancia requiere la creación de entornos de hardware duplicados. Azure puede ayudar a que la aplicación tenga alta disponibilidad a través de zonas de disponibilidad.
+
+    Puede usar zonas de disponibilidad para ejecutar aplicaciones críticas y conseguir una alta disponibilidad en la arquitectura de sus aplicaciones si coloca los recursos de proceso, almacenamiento, red y datos dentro de una zona y los replica en otras. Recuerde que la duplicación de los servicios y la transferencia de datos entre zonas de disponibilidad podrían suponer un costo.
+    
+    Las zonas de disponibilidad son principalmente para las máquinas virtuales, los discos administrados, los equilibradores de carga y las bases de datos SQL. Los servicios de Azure que admiten zonas de disponibilidad se dividen en tres categorías:</p>
+
+    <ul>
+        <li>Servicios de zona: ancle el recurso a una zona específica (por ejemplo, máquinas virtuales, discos administrados, direcciones IP).</li>
+        <li>Servicios de redundancia de zona: la plataforma se replica automáticamente entre zonas (por ejemplo, almacenamiento con redundancia de zona, SQL Database).</li>
+        <li>Servicios no regionales: los servicios siempre están disponibles en las ubicaciones geográficas de Azure y son resistentes a las interrupciones de toda la zona, así como a las de toda la región.</li>
+    </ul>
+
+    <p>Incluso con la resistencia adicional que proporcionan las zonas de disponibilidad, es posible que un evento pueda ser tan grande que afecte a varias zonas de disponibilidad en una sola región. Para proporcionar una mayor resistencia, Azure tiene pares de regiones.</p>
+
+    <h3>Pares de región</h3>
+
+    <p>La mayoría de las regiones de Azure se emparejan con otra región de la misma zona geográfica (por ejemplo, EE. UU., Europa o Asia) que se encuentre como mínimo a 500 km de distancia. Este enfoque permite la replicación de recursos en una zona geográfica que ayuda a reducir la probabilidad de que se produzcan interrupciones provocadas por eventos como desastres naturales, disturbios sociales, cortes del suministro eléctrico o interrupciones de la red física que afecten a una región completa. Por ejemplo, si una región de un par se ve afectada por un desastre natural, los servicios conmutarán por error automáticamente a la otra región de su par de regiones.</p>
+
+    <pre>
+        Importante
+
+        No todos los servicios de Azure replican automáticamente los datos ni se replican automáticamente desde 
+        una región con errores para la replicación cruzada en otra región habilitada. En estos escenarios, el cliente debe 
+        configurar la replicación y la recuperación.
+    </pre>
+
+    <p>
+        Algunos pares de regiones de ejemplo en Azure son Oeste de EE. UU. y Este de EE. UU., y Sudeste Asiático y Asia Pacífico. Como las dos regiones están directamente conectadas y lo suficientemente lejos como para estar aisladas contra desastres regionales, puede usarlas para proporcionar redundancia de datos y servicios de confianza.
+   </p>
+
+   <img src="./img/4/7.png" alt="">
+
+   <h3>Ventajas adicionales de los pares de región:</h3>
+   <ul>
+        <li>Si se produce una gran interrupción de Azure, se da prioridad a una región de cada par para asegurarse de que al menos una se restaure lo más rápido posible para las aplicaciones hospedadas en ese par de regiones.</li>
+        <li>Las actualizaciones planeadas de Azure se implementan una a una en regiones emparejadas para minimizar el tiempo de inactividad y el riesgo de interrupción de la aplicación.</li>
+        <li>Los datos siguen residiendo en la misma zona geográfica que su pareja (excepto Sur de Brasil) con fines de jurisdicción fiscal y de aplicación de la ley.</li>
+   </ul>
+
+   <pre>
+    Importante
+
+    La mayoría de las regiones se emparejan en dos direcciones, es decir, son la copia de seguridad de la región que 
+    proporciona una copia de seguridad para ellas (Oeste de EE. UU. y Este de EE. UU. se copian entre sí). 
+    Sin embargo, algunas regiones, como Oeste de la India y Sur de Brasil, se emparejan en una sola dirección. 
+    En un emparejamiento unidireccional, la región primaria no proporciona copia de seguridad para su región secundaria. 
+    Por tanto, aunque la región secundaria de la India Occidental es Sur de la India, Sur de la India no depende de 
+    la India Occidental. La región secundaria del India occidental es Sur de la India, pero la región secundaria esta última es 
+    Centro de la India. Sur de Brasil es un caso único porque se empareja con una región fuera de su ubicación geográfica. 
+    La región secundaria de Sur de Brasil es Centro-sur de EE. UU. La región secundaria de Centro-sur de EE. UU. 
+    no es Sur de Brasil.
+   </pre>
+
+   <h3>Regiones soberanas</h3>
+   <p>Además de las regiones normales, Azure también tiene regiones soberanas. Las regiones soberanas son instancias de Azure que están aisladas de la instancia principal de Azure. Es posible que tenga que usar una región soberana con fines legales o de cumplimiento.
+
+    Entre las regiones soberanas de Azure se incluyen las siguientes:</p>
+
+    <ul>
+        <li>US DoD (centro), US Gov Virginia, US Gov Iowa y más: Estas regiones son instancias físicas y lógicas con aislamiento de red de Azure para asociados y agencias de la administración pública de EE. UU. Estos centros de datos están operados por personal estadounidense sometido a evaluación e incluyen certificaciones de cumplimiento adicionales.</li>
+        <li>Este de China, Norte de China y más: Estas regiones están disponibles gracias a una asociación exclusiva entre Microsoft y 21Vianet, por la cual Microsoft no mantiene directamente los centros de datos.</li>
+    </ul>
+
+    <h2>Descripción de la infraestructura de administración de Azure</h2>
+
+    <p>La infraestructura de administración incluye recursos de Azure y grupos de recursos, suscripciones y cuentas. Comprender la organización jerárquica le ayudará a planear los proyectos y productos dentro de Azure.</p>
+
+    <h3>Recursos y grupos de recursos de Azure</h3>
+    <p>Un recurso es el bloque de creación básico de Azure. Todo lo que cree, aprovisione, implemente, etc., es un recurso. Máquinas virtuales (VM), redes virtuales, bases de datos, servicios cognitivos, etc., se consideran recursos dentro de Azure.</p>
+
+    <img src="./img/4/8.png" alt="">
+
+    <p>Los grupos de recursos son simplemente agrupaciones de recursos. Al crear un recurso, es necesario colocarlo en un grupo de recursos. Aunque un grupo de recursos puede contener muchos recursos, un único recurso solo puede estar en un grupo de recursos a la vez. Es posible que algunos recursos se muevan entre grupos de recursos, pero al mover un recurso a un nuevo grupo, ya no estará asociado al grupo anterior. Además, los grupos de recursos no se pueden anidar, lo que significa que no se puede colocar el grupo de recursos B dentro del grupo de recursos A.
+
+    Los grupos de recursos proporcionan una manera cómoda de agrupar recursos. Al aplicar una acción a un grupo de recursos, se aplicará a todos los recursos que contiene. Si elimina un grupo de recursos, se eliminarán todos los recursos que contiene. Si concede o deniega el acceso a un grupo de recursos, habrá concedido o denegado acceso a todos los recursos que contiene.
+    
+    Al aprovisionar recursos, es conveniente pensar en la estructura del grupo de recursos que mejor se adapte a las necesidades.
+    
+    Por ejemplo, si vas a configurar un entorno de desarrollo temporal, agrupar todos los recursos significa que puede desaprovisionar todos los recursos asociados a la vez si elimina el grupo de recursos. Si vas a aprovisionar recursos de proceso que necesitarán tres esquemas de acceso diferentes, puede ser mejor agruparlos en función del esquema de acceso y, después, asignar acceso en el nivel de grupo de recursos.
+    
+    No hay reglas rígidas sobre cómo se usan los grupos de recursos, por lo que debe tener en cuenta cómo configurarlos para maximizar su utilidad.</p>
+
+    <h3>Suscripciones de Azure</h3>
+
+    <p>
+        En Azure, las suscripciones son una unidad de administración, facturación y escala. Al igual que los grupos de recursos son una manera de organizar lógicamente los recursos, las suscripciones permiten organizar lógicamente los grupos de recursos y facilitar la facturación.
+    </p>
+
+    <img src="./img/4/9.png" alt="">
+
+    <p>* El uso de Azure requiere una suscripción de Azure. Una suscripción le proporciona acceso autenticado y autorizado a los servicios y productos de Azure. Además, también le permite aprovisionar los recursos. Una suscripción de Azure se vincula a una cuenta de Azure, que es una identidad de Microsoft Entra ID o en un directorio en el que confía Microsoft Entra ID.
+
+    Una cuenta puede tener varias suscripciones, pero solo es obligatorio tener una. En una cuenta de varias suscripciones, puede usarlas para configurar diferentes modelos de facturación y aplicar diferentes directivas de administración de acceso. Puede usar las suscripciones de Azure para definir límites en torno a los productos, servicios y recursos de Azure. Hay dos tipos de límites de suscripción que puede utilizar:</p>
+
+    <ul>
+        <li>Límite de facturación: Este tipo de suscripción determina cómo se factura una cuenta de Azure por el uso de Azure. Puede crear varias suscripciones para diferentes tipos de requisitos de facturación. Azure genera facturas e informes de facturación independientes para cada suscripción, de modo que pueda organizar y administrar los costos.</li>
+        <li>Límite de control de acceso: Azure aplica las directivas de administración de acceso en el nivel de suscripción, por lo que puede crear suscripciones independientes para reflejar distintas estructuras organizativas. Por ejemplo, dentro de una empresa hay diferentes departamentos a los que se pueden aplicar directivas de suscripción de Azure distintas. Este modelo de facturación le permite administrar y controlar el acceso a los recursos que los usuarios aprovisionan con suscripciones específicas.</li>
+    </ul>
+
+    <h3>Creación de una suscripción de Azure adicional</h3>
+    <p>De forma similar al uso de grupos de recursos para separar los recursos por función o acceso, es posible que quiera crear suscripciones adicionales con fines de administración de recursos o facturación. Por ejemplo, puedes optar por crear suscripciones adicionales para separar lo siguiente:</p>
+
+    <ul>
+        <li>Entornos: puedes optar por crear suscripciones con el fin de configurar entornos independientes para el desarrollo y las pruebas, para seguridad o para aislar los datos por motivos de cumplimiento. Este diseño es especialmente útil porque el control de acceso a los recursos se produce en el nivel de suscripción.</li>
+        <li>Estructuras organizativas: puedes crear suscripciones para reflejar las distintas estructuras organizativas. Por ejemplo, podría limitar un equipo a recursos de bajo costo, al tiempo que permite que el departamento de TI tenga un alcance completo. Este diseño permite administrar y controlar el acceso a los recursos que los usuarios aprovisionan en cada suscripción.</li>
+        <li>Facturación: puedes crear suscripciones adicionales con fines de facturación. Dado que los costos se agregan primero en el nivel de suscripción, es posible que quieras crear suscripciones para administrar y realizar un seguimiento de los costos en función de sus necesidades. Por ejemplo, puede que quieras crear una suscripción para las cargas de trabajo de producción, y otra suscripción para las cargas de trabajo de desarrollo y pruebas.</li>
+    </ul>
+
+    <h3>Grupos de administración de Azure</h3>
+
+    <p>La última pieza es el grupo de administración. Los recursos se recopilan en grupos de recursos y los grupos de recursos se recopilan en suscripciones. Si acaba de empezar en Azure, podría parecer una jerarquía suficiente para mantener las cosas organizadas. Pero imagine que trabaja con varias aplicaciones, varios equipos de desarrollo, en varias zonas geográficas.
+
+    Si tienes muchas suscripciones, es posible que necesite una forma de administrar con eficacia el acceso, las directivas y el cumplimiento para esas suscripciones. Los grupos de administración de Azure proporcionan un nivel de ámbito por encima de las suscripciones. Las suscripciones se organizan en contenedores llamados grupos de administración, a los que se aplican condiciones de gobernanza. Todas las suscripciones de un grupo de administración heredan automáticamente las condiciones que tenga aplicadas, de la misma manera que los grupos de recursos heredan la configuración de las suscripciones y los recursos heredan de los grupos de recursos. Los grupos de administración proporcionan capacidad de administración de nivel empresarial a gran escala con independencia del tipo de suscripciones que tenga. Los grupos de administración se pueden anidar.
+    </p>
+
+    <h3>Jerarquía de grupo de administración, suscripciones y grupo de recursos</h3>
+    <p>Puede compilar una estructura flexible de grupos de administración y suscripciones para organizar los recursos en una jerarquía para una administración unificada de las directivas y el acceso. El diagrama siguiente muestra un ejemplo de creación de una jerarquía para la gobernanza mediante grupos de administración.</p>
+
+    <img src="./img/4/10.png" alt="">
+
+    <p>Algunos ejemplos de cómo podría usar los grupos de administración podrían ser los siguientes:</p>
+
+    <ul>
+        <li>Crear una jerarquía que aplique una directiva. Podría limitar las ubicaciones de las máquinas virtuales a la región Oeste de EE. UU. en un grupo denominado Producción. Esta directiva se heredará en todas las suscripciones descendientes de ese grupo de administración y se aplicará a todas las máquinas virtuales de esas suscripciones. El propietario de los recursos o las suscripciones no puede modificar esta directiva de seguridad, lo que permite una gobernanza mejorada.</li>
+        <li>Proporcionar acceso de usuario a varias suscripciones. Al mover varias suscripciones bajo un grupo de administración, puede crear una asignación del control de acceso basado en roles (RBAC) en el grupo de administración. La asignación de RBAC de Azure en el nivel de grupo de administración significa que todos los grupos de administración secundaria, las suscripciones, los grupos de recursos y los recursos bajo ese grupo de administración también heredarían esos permisos. Una asignación en el grupo de administración puede permitir a los usuarios tener acceso a todo lo que necesitan, en lugar de crear scripts de Azure RBAC sobre las distintas suscripciones.</li>
+    </ul>
+
+    <p>Datos importantes sobre los grupos de administración:</p>
+
+    <ul>
+        <li>Se admiten 10 000 grupos de administración en un único directorio.</li>
+        <li>Un árbol de grupo de administración puede admitir hasta seis niveles de profundidad. Este límite no incluye el nivel raíz ni el nivel de suscripción.</li>
+        <li>Cada grupo de administración y suscripción solo puede admitir un elemento primario.</li>
+    </ul>
+
+    <h2>Ejercicio: Creación de un recurso de Azure</h2>
+
+    <h3>Tarea 1: Creación de una máquina virtual</h3>
+
+    <p>En esta tarea, creará una máquina virtual mediante Azure Portal.</p>
+
+    <ol>
+        <li>Inicie sesión en Azure Portal.</li>
+
+        <li>Selecciona Crear un recurso > Proceso > Máquina virtual > Crear.</li>
+
+        <li>El panel Crear una máquina virtual se abre en la pestaña Aspectos básicos.</li>
+
+        <li>Comprueba o escribe los valores siguientes para cada opción. Si no se especifica un valor, deje el predeterminado.</li>
+
+        <table aria-label="Tabla 1" class="table" border="1px solid black">
+            <thead>
+            <tr>
+            <th><strong>Configuración</strong></th>
+            <th><strong>Valor</strong></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td>Suscripción</td>
+            <td>Suscripción de Concierge</td>
+            </tr>
+            <tr>
+            <td>Grupo de recursos</td>
+            <td>Seleccione el nombre del grupo de recursos que comienza con <strong>learn</strong>.</td>
+            </tr>
+            <tr>
+            <td>Nombre de la máquina virtual</td>
+            <td>my-VM</td>
+            </tr>
+            <tr>
+            <td>Region</td>
+            <td>Deje el valor predeterminado.</td>
+            </tr>
+            <tr>
+            <td>Opciones de disponibilidad</td>
+            <td>Deje el valor predeterminado.</td>
+            </tr>
+            <tr>
+            <td>Tipo de seguridad</td>
+            <td>Deje el valor predeterminado.</td>
+            </tr>
+            <tr>
+            <td>Imagen</td>
+            <td>Deje el valor predeterminado.</td>
+            </tr>
+            <tr>
+            <td>Arquitectura VM</td>
+            <td>Deje el valor predeterminado.</td>
+            </tr>
+            <tr>
+            <td>Ejecución de Azure Spot con descuento</td>
+            <td>No activado</td>
+            </tr>
+            <tr>
+            <td>Size</td>
+            <td>Deje el valor predeterminado.</td>
+            </tr>
+            <tr>
+            <td>Tipo de autenticación</td>
+            <td>Contraseña</td>
+            </tr>
+            <tr>
+            <td>Nombre de usuario</td>
+            <td>azureuser</td>
+            </tr>
+            <tr>
+            <td>Contraseña</td>
+            <td>Escribe una contraseña personalizada</td>
+            </tr>
+            <tr>
+            <td>Confirmación de la contraseña</td>
+            <td>Vuelve a escribir la contraseña personalizada</td>
+            </tr>
+            <tr>
+            <td>Puertos de entrada públicos</td>
+            <td>Ninguno</td>
+            </tr>
+            </tbody>
+            </table>
+        <li>Seleccione Revisar y crear.</li>
+    </ol>
+
+    <pre>
+        Importante
+
+        Los detalles del producto incluirán un costo asociado a la creación de la máquina virtual. 
+        Se trata de una función del sistema. Si va a crear la máquina virtual en el espacio aislado de Learn, 
+        en realidad no incurrirá en ningún costo.
+    </pre>
+
+    <h3>Tarea 2: Comprobación de los recursos creados</h3>
+
+    <p>Una vez que se cree la implementación, puedes comprobar que Azure ha creado no solo una máquina virtual, sino todos los recursos asociados que necesita la máquina virtual.</p>
+
+    <ol>
+        <li>Selecciona Inicio.</li>
+        <li>Selecciona Grupos de recursos.</li>
+        <li>Selecciona el grupo de recursos learn-b9d69146-c38b-4dd7-8160-53519391d528.</li>
+
+    </ol>
+
+    <p>Deberías ver una lista de recursos en el grupo de recursos. La cuenta de almacenamiento y la red virtual están asociadas al espacio aislado de Learn. Pero el resto de los recursos se han creado al crear la máquina virtual. De manera predeterminada, Azure les ha asignado un nombre similar para ayudar con la asociación y los ha agrupado en el mismo grupo de recursos.
+
+    Felicidades. Has creado un recurso en Azure y ha tenido la oportunidad de ver cómo se agrupan los recursos en la creación.</p>
+
+    <h3>Limpieza</h3>   
+
+    <p>El espacio aislado limpia los recursos automáticamente cuando haya terminado con este módulo.
+
+    Al trabajar en una suscripción propia, se recomienda identificar al final de un proyecto si aún necesita los recursos creados. Los recursos que dejas en ejecución pueden costar dinero. Puede eliminar los recursos de forma individual o eliminar el grupo de recursos para eliminar todo el conjunto de recursos.</p>
+
+
+    <img src="./img/4/11.JPG" alt="">
+
+</body>
+</html>
+
+
