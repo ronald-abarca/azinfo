@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <h2>Descripción de los servicios de proceso y redes de Azure</h2>
+
+    <h2>Introducción</h2>
+
+    <p>En este módulo, se le presentarán los servicios de proceso y redes de Azure. Obtendrá información sobre tres de las opciones de proceso (máquinas virtuales, contenedores y funciones de Azure). También obtendrá información sobre algunas de las características de red, como redes virtuales de Azure, Azure DNS y Azure ExpressRoute.</p>
+
+    <h3>Objetivos de aprendizaje</h3>
+
+    <ul>
+        <li>Comparar los tipos de proceso, incluidas las instancias de contenedor, las máquinas virtuales y las funciones.</li>
+        <li>Describir las opciones de máquina virtual, incluidas las máquinas virtuales (VM), los conjuntos de escalado de máquinas virtuales, los conjuntos de disponibilidad de máquinas virtuales y Azure Virtual Desktop.</li>
+        <li>Describir los recursos necesarios para las máquinas virtuales.</li>
+        <li>Describir las opciones de hospedaje de aplicaciones, incluidos Azure Web Apps, contenedores y máquinas virtuales.</li>
+        <li>Describir las redes virtuales, incluido el propósito de Azure Virtual Networks, las subredes virtuales de Azure, el emparejamiento, Azure DNS, VPN Gateway y ExpressRoute.</li>
+        <li>Definir puntos de conexión públicos y privados.</li>
+    </ul>
+
+    <h2>Descripción de Azure Virtual Machines</h2>
+    <p>Con Azure Virtual Machines (VM), puedes crear y usar máquinas virtuales en la nube. Estas máquinas virtuales proporcionan una infraestructura como servicio (IaaS) en forma de un servidor virtualizado y se pueden usar de muchas formas. Como sucede en un equipo físico, puedes personalizar todo el software que se ejecuta en la máquina virtual. Las máquinas virtuales son una opción ideal cuando necesitas lo siguiente:</p>
+
+    <ul>
+        <li>Control total sobre el sistema operativo (SO).</li>
+        <li>Capacidad de ejecutar software personalizado.</li>
+        <li>Usar configuraciones de hospedaje personalizadas.</li>
+    </ul>
+
+    <p>Una máquina virtual de Azure te ofrece la flexibilidad de la virtualización sin necesidad de adquirir y mantener el hardware físico que ejecuta la máquina virtual. Pero, como oferta de IaaS, tendrá que configurar, actualizar y mantener el software que se ejecuta en la máquina virtual.
+
+    Incluso puedes crear o usar una imagen ya creada para aprovisionar rápidamente máquinas virtuales. Al seleccionar una imagen de máquina virtual preconfigurada, podrás crear y aprovisionar una máquina virtual en cuestión de minutos. Una imagen es una plantilla que se usa para crear una máquina virtual y puede que ya incluya un sistema operativo y otro software, como herramientas de desarrollo o entornos de hospedaje web.</p>
+
+    <h3>Escalado de máquinas virtuales en Azure</h3>
+
+    <p>Se pueden ejecutar máquinas virtuales únicas para pruebas, desarrollo o tareas secundarias. También se pueden agrupar las máquinas virtuales para proporcionar alta disponibilidad, escalabilidad y redundancia. Azure también puede administrar la agrupación de máquinas virtuales con características como conjuntos de escalado y conjuntos de disponibilidad.</p>
+
+    <h3>Conjuntos de escalado de máquinas virtuales</h3>
+    <p>Los conjuntos de escalado de máquinas virtuales permiten crear y administrar un grupo de máquinas virtuales idénticas, de carga equilibrada. Si simplemente ha creado varias máquinas virtuales con el mismo propósito, tendría que asegurarse de que todas se han configurado de forma idéntica y, después, configurar parámetros de enrutamiento de red para garantizar la eficacia. También tendría que supervisar el uso para determinar si necesita aumentar o disminuir el número de máquinas virtuales.
+
+    En su lugar, con los conjuntos de escalado de máquinas virtuales, Azure automatiza la mayor parte de ese trabajo. Los conjuntos de escalado le permiten administrar, configurar y actualizar de forma centralizada un gran número de máquinas virtuales en cuestión de minutos. El número de instancias de máquina virtual puede aumentar o disminuir automáticamente según la demanda, o bien puede establecerlo para que se escale en función de una programación definida. Los conjuntos de escalado de máquinas virtuales también implementan automáticamente un equilibrador de carga para asegurarse de que los recursos se usan de forma eficaz. Con los conjuntos de escalado de máquinas virtuales, puede crear servicios a gran escala para áreas como proceso, macrodatos y cargas de trabajo de contenedor.</p>
+
+    <h3>Conjuntos de disponibilidad de máquinas virtuales</h3>
+
+    <p>Los conjuntos de disponibilidad de máquinas virtuales son otra herramienta que le ayudará a crear un entorno más resistente y de alta disponibilidad. Los conjuntos de disponibilidad están diseñados para garantizar que las máquinas virtuales escalen las actualizaciones y tengan una conectividad de red y potencia variadas, lo que evita que se pierdan todas las máquinas virtuales debido a un solo fallo de energía o de la red.
+
+    Los conjuntos de disponibilidad lo hacen mediante la agrupación de las máquinas virtuales de dos maneras: dominio de actualización y dominio de error.</p>
+
+    <ul>
+        <li>Dominio de actualización: agrupa las máquinas virtuales que se pueden reiniciar al mismo tiempo. Esto le permite aplicar actualizaciones mientras sabe que solo una agrupación de dominios de actualización estará sin conexión a la vez. Se actualizarán todas las máquinas de un dominio de actualización. A un grupo de actualizaciones que realiza el proceso de actualización se le asigna un tiempo de 30 minutos de recuperación antes de que se inicie el mantenimiento en el siguiente dominio de actualización.</li>
+        <li>Dominio de error: agrupa las máquinas virtuales por fuente de alimentación común y conmutador de red. De forma predeterminada, un conjunto de disponibilidad dividirá las máquinas virtuales en un máximo de tres dominios de error. Esto ayuda a protegerse frente a un error de alimentación física o de la red al tener las máquinas virtuales en dominios de error diferentes (por tanto, conectadas a diferentes recursos de alimentación y red).</li>
+    </ul>
+
+    <p>Lo mejor de todo es que la configuración de un conjunto de disponibilidad no supone ningún costo adicional. Solo paga por las instancias de máquina virtual que cree.</p>
+
+    <h2>Ejemplos de cuándo usar máquinas virtuales</h2>
+
+    <ul>
+        <li>Durante las pruebas y el desarrollo. Las máquinas virtuales proporcionan una manera rápida y sencilla de crear distintas configuraciones de sistema operativo y de aplicación. El personal encargado de las pruebas y del desarrollo puede eliminar fácilmente las máquinas virtuales cuando ya no las necesite.</li>
+        <li>Al ejecutar aplicaciones en la nube. La capacidad de ejecutar determinadas aplicaciones en la nube pública, en lugar de crear una infraestructura tradicional para ejecutarlas, puede proporcionar importantes beneficios económicos. Por ejemplo, es posible que una aplicación necesite controlar las fluctuaciones en la demanda. Apagar las máquinas virtuales cuando no las necesite o iniciarlas rápidamente para satisfacer un aumento repentino de la demanda significa que solo paga por los recursos que se usan.</li>
+        <li>Al ampliar el centro de datos a la nube: una organización puede extender las capacidades de su propia red local mediante la creación de una red virtual en Azure y la adición de máquinas virtuales a esa red virtual. Las aplicaciones como SharePoint se pueden ejecutar en una máquina virtual de Azure en lugar de hacerlo de forma local. Esta disposición hace que sea más sencilla o menos costosa de implementar que en un entorno local.</li>
+        <li>Durante la recuperación ante desastres: como sucede con la ejecución de ciertos tipos de aplicaciones en la nube y la ampliación de una red local a la nube, puede obtener un ahorro considerable en costos si se usa un enfoque basado en IaaS para la recuperación ante desastres. Si se produce un error en un centro de datos principal, puede crear máquinas virtuales que se ejecuten en Azure para ejecutar las aplicaciones críticas y, después, puede apagarlas cuando el centro de datos principal vuelva a estar operativo.</li>
+    </ul>
+
+    <h3>Traslado a la nube con máquinas virtuales</h3>
+
+    <p>Las máquinas virtuales también son una opción excelente cuando se mueve de un servidor físico a la nube (también conocido como Lift-and-shift). Puedes crear una imagen del servidor físico y hospedarla en una máquina virtual con pocos o ningún cambio. Al igual que un servidor local físico, debes mantener la máquina virtual: es responsable de mantener el sistema operativo y el software instalados.</p>
+
+    <h3>Recursos de máquina virtual</h3>
+    <p>Al aprovisionar una máquina virtual, también tendrás la oportunidad de elegir los recursos asociados a esa máquina virtual, como los siguientes:</p>
+
+    <ul>
+        <li>Tamaño (propósito, número de núcleos de procesador y cantidad de RAM)</li>
+        <li>Discos de almacenamiento (unidades de disco duro, unidades de estado sólido, etc.)</li>
+        <li>Redes (red virtual, dirección IP pública y configuración de puertos)</li>
+    </ul>
+
+    <h2>Ejercicio: Creación de una máquina virtual de Azure</h2>
+    <p>
+        En este ejercicio, crearás una máquina virtual (VM) de Azure e instalará Nginx, un servidor web popular.
+
+        Por ejemplo, puedes usar Azure Portal, la CLI de Azure, Azure PowerShell o una plantilla de Azure Resource Manager (ARM).
+
+        En este caso, vas a usar la CLI de Azure.
+    </p>
+
+    <h3>Tarea 1: Creación de una máquina virtual Linux e instalación de Nginx</h3>
+
+    <p>Usa los siguientes comandos de la CLI de Azure para crear una máquina virtual Linux e instalar Nginx. Una vez creada la máquina virtual, usará la extensión de script personalizado para instalar Nginx. La extensión de script personalizado es una manera fácil de descargar y ejecutar scripts en máquinas virtuales de Azure. Solo es una de las numerosas formas de configurar el sistema después de que la máquina virtual esté en funcionamiento.</p>
+
+    <ol>
+
+        <li>Desde Cloud Shell, ejecuta el siguiente comando az vm create para crear una máquina virtual Linux:</li>
+
+        <pre>
+            az vm create \
+            --resource-group "learn-2a435d14-725d-458c-b6e2-c94e2e41b8c0" \
+            --name my-vm \
+            --public-ip-sku Standard \
+            --image Ubuntu2204 \
+            --admin-username azureuser \
+            --generate-ssh-keys 
+        </pre>
+        <p>La máquina virtual tardará unos minutos en aparecer. Ha asignado el nombre my-vm a la máquina virtual. Use este nombre para hacer referencia a la máquina virtual en los pasos posteriores.</p>
+        <li>Ejecuta el siguiente comando az vm extension set para configurar Nginx en la máquina virtual:</li>
+
+        <pre>
+            az vm extension set \
+            --resource-group "learn-2a435d14-725d-458c-b6e2-c94e2e41b8c0" \
+            --vm-name my-vm \
+            --name customScript \
+            --publisher Microsoft.Azure.Extensions \
+            --version 2.1 \
+            --settings '{"fileUris":["https://raw.githubusercontent.com/MicrosoftDocs/mslearn-welcome-to-azure/master/configure-nginx.sh"]}' \
+            --protected-settings '{"commandToExecute": "./configure-nginx.sh"}'
+        </pre>
+
+        <p>Este comando usa la extensión de script personalizado para ejecutar un script de Bash en la máquina virtual. El script se almacena en GitHub. Mientras se ejecuta el comando, puede optar por examinar el script de Bash en una pestaña independiente del explorador. Para resumir, el script:</p>
+
+        <ol>
+            <li>Ejecuta apt-get update para descargar la información más reciente del paquete desde Internet. Este paso ayuda a garantizar que el siguiente comando pueda encontrar la versión más reciente del paquete Nginx.</li>
+            <li>Instala Nginx.</li>
+            <li>Establece la página principal, /var/www/html/index.html, para que imprima un mensaje de bienvenida en el que se incluye el nombre de host de la máquina virtual.</li>
+        </ol>
+    </ol>
+
+    <h2>Descripción de Azure Virtual Desktop</h2>
+    <p>Otro tipo de máquina virtual es Azure Virtual Desktop. Azure Virtual Desktop es un servicio de virtualización de escritorios y aplicaciones que se ejecuta en la nube. Te permite usar una versión hospedada en la nube de Windows desde cualquier ubicación. Azure Virtual Desktop funciona en dispositivos y sistemas operativos, y funciona con aplicaciones que puede usar para acceder a escritorios remotos o a la mayoría de exploradores modernos.
+
+    En el vídeo siguiente te ofrece una introducción sobre Azure Virtual Desktop:
+    
+    </p>
+
+    <a href="https://www.microsoft.com/es-es/videoplayer/embed/RE4LRpC?postJsllMsg=true&autoCaptions=es-es">video</a>
+
+    <h3>Aumento de la seguridad</h3>
+
+    <p>Azure Virtual Desktop proporciona administración centralizada de seguridad para los escritorios de los usuarios con Microsoft Entra ID. Puedes habilitar la autenticación multifactor para proteger los inicios de sesión de los usuarios. También puedes proteger el acceso a los datos mediante la asignación a los usuarios de controles de acceso basados en roles (RBAC) detallados.
+
+        Con Azure Virtual Desktop, los datos y las aplicaciones se separan del hardware local y El escritorio y las aplicaciones reales se ejecutan en la nube, lo que significa que se reduce el riesgo de dejar datos confidenciales en un dispositivo personal. Además, las sesiones de usuario están aisladas en entornos de una o varias sesiones.</p>
+
+    <h3>Implementación de sesión múltiple de Windows 10 o Windows 11</h3> 
+    
+    <p>
+        azure Virtual Desktop permite usar la sesión múltiple de Windows 10 o Windows 11 Enterprise, el único sistema operativo basado en cliente de Windows que permite varios usuarios simultáneos en una sola máquina virtual. Azure Virtual Desktop también proporciona una experiencia más coherente gracias a la compatibilidad más amplia con las aplicaciones en comparación con los sistemas operativos basados en Windows Server.
+    </p>
+
+    <h2>Descripción de contenedores de Azure</h2>
+
+    <p>A pesar de que las máquinas virtuales son una excelente manera de reducir los costos frente a las inversiones que son necesarias para el hardware físico, están limitadas a un solo sistema operativo por máquina virtual. Los contenedores son una excelente opción si quiere ejecutar varias instancias de una aplicación en un solo equipo host.</p>
+
+    <h3>¿Qué son los contenedores?</h3>
+
+    <p>Los contenedores son un entorno de virtualización. Al igual que la ejecución de varias máquinas virtuales en un solo host físico, se pueden ejecutar varios contenedores en un solo host físico o virtual. A diferencia de las máquinas virtuales, no se administra el sistema operativo de un contenedor. Las máquinas virtuales son similares a una instancia de sistema operativo que se puede conectar y administrar. Los contenedores son ligeros y se han diseñado para crearse, escalarse horizontalmente y detenerse de forma dinámica. Es posible crear e implementar máquinas virtuales a medida que aumenta la demanda de aplicaciones, pero los contenedores son un método más ligero y ágil. Los contenedores están diseñados para permitirle responder a petición a los cambios. Con los contenedores puede reiniciar rápidamente en caso de bloqueo o interrupción del hardware. Uno de los motores de contenedores más populares es Docker. Y Azure es compatible con Docker.</p>
+
+    <h3>Comparación de máquinas virtuales con contenedores</h3>
+
+    <p>En el vídeo siguiente se resaltan algunas de las diferencias importantes entre las máquinas virtuales y los contenedores:</p>
+
+    <a href="https://www.microsoft.com/es-es/videoplayer/embed/RE2yuaq?postJsllMsg=true&autoCaptions=es-es">video</a>
+
+    <h3>Azure Container Instances</h3>
+
+    <p>
+        Azure Container Instances ofrece la forma más rápida y sencilla de ejecutar un contenedor en Azure sin tener que administrar máquinas virtuales o adoptar servicios adicionales. Azure Container Instances es una oferta de plataforma como servicio (PaaS). Azure Container Instances le permite cargar los contenedores. A continuación, el servicio ejecutará los contenedores por usted.
+    </p>
+
+    <h3>Azure Container Apps</h3>
+    <p>
+        Azure Container Apps son similares de muchas maneras a una instancia de contenedor. Le permiten ponerse en marcha de inmediato, quitan la pieza de administración de contenedores y son una oferta de PaaS. Container Apps tienen ventajas adicionales, como la capacidad de incorporar el equilibrio de carga y el escalado. Estas otras funciones le permiten ser más elásticas en el diseño.
+    </p>
+
+    <h3>
+        Azure Kubernetes Service
+    </h3>
+
+    <p>
+        Azure Kubernetes Service (AKS) es un servicio de orquestación de contenedores. Un servicio de orquestación administra el ciclo de vida de los contenedores. Al implementar una flota de contenedores, AKS puede hacer que la administración de flotas sea más sencilla y eficaz.
+    </p>
+
+    <h3>Uso de contenedores en las soluciones</h3>
+
+    <p>
+        Los contenedores se usan normalmente para crear soluciones mediante una arquitectura de microservicios. Esta arquitectura es donde se dividen las soluciones en partes más pequeñas e independientes. Por ejemplo, se puede dividir un sitio web en un contenedor que hospeda el front-end, otro que hospeda el back-end y un tercero para el almacenamiento. De esta forma, puede separar partes de la aplicación en secciones lógicas que se pueden mantener, escalar o actualizar independientemente.
+
+        Imagine que el back-end de su sitio web ha alcanzado el límite de su capacidad, pero el front-end y el almacenamiento no están sobrecargados. Con los contenedores puede escalar el back-end por separado para mejorar el rendimiento. Si algo requiere este cambio, también puede optar por cambiar el servicio de almacenamiento o modificar el front-end sin afectar a ninguno de los otros componentes.
+    </p>
+
+    <h2>Descripción de Azure Functions</h2>
+    <p>Azure Functions es una opción de proceso sin servidor controlada por eventos que no necesita el mantenimiento de máquinas virtuales ni contenedores. Si compila una aplicación mediante máquinas virtuales o contenedores, esos recursos deben "ejecutarse" para que la aplicación funcione. Con Azure Functions, un evento activa la función, lo que reduce la necesidad de mantener los recursos aprovisionados cuando no hay ningún evento.</p>
+
+    <h3>Informática sin servidor en Azure</h3>
+    <a href="https://www.microsoft.com/es-es/videoplayer/embed/RE2yzjL?postJsllMsg=true&autoCaptions=es-es">video</a>
+
+    <h3>Ventajas de Azure Functions</h3>
+
+    <p>
+        El uso de Azure Functions es idóneo si solo le interesa el código que ejecuta el servicio y no la infraestructura o la plataforma subyacente. Las funciones se usan normalmente cuando se debe realizar un trabajo en respuesta a un evento (a menudo a través de una solicitud REST), un temporizador o un mensaje de otro servicio de Azure, y cuando ese trabajo puede completarse rápidamente, en segundos o en menos tiempo.
+
+        Functions se escala automáticamente según la demanda, por lo que es una opción correcta cuando la demanda es variable.
+
+        Azure Functions ejecuta el código cuando se desencadena y desasigna recursos automáticamente cuando la función finaliza. En este modelo, solo se le cobrará por el tiempo de CPU usado mientras se ejecuta la función.
+
+        Las funciones pueden ser sin estado o con estado. Cuando son sin estado (valor predeterminado), se comportan como si se reiniciaran cada vez que responden a un evento. Cuando son con estado (denominado Durable Functions), se pasa un contexto a través de la función para realizar el seguimiento antes de la actividad.
+
+        Las funciones son un componente clave de la informática sin servidor. También son una plataforma de proceso general para ejecutar cualquier tipo de código. Si cambian las necesidades de la aplicación del desarrollador, se puede implementar el proyecto en un entorno que no sea sin servidor. Esta flexibilidad permite administrar el escalado, ejecutar en redes virtuales e incluso aislar por completo las funciones.
+
+
+    </p>
+
+    <h2>Descripción de las opciones de hospedaje de aplicaciones</h2>
+    <p>Si necesita hospedar la aplicación en Azure, es posible que cambie inicialmente a una máquina virtual (VM) o a contenedores. Tanto las máquinas virtuales como los contenedores proporcionan excelentes soluciones de hospedaje. Las máquinas virtuales proporcionan el máximo control del entorno de hospedaje y le permiten configurarlo exactamente como desea. Las máquinas virtuales también pueden ser el método de hospedaje más conocido si no está familiarizado con la nube. Los contenedores, con la capacidad de aislar y administrar individualmente diferentes aspectos de la solución de hospedaje, también pueden ser una opción sólida y atractiva.
+
+    Hay otras opciones de hospedaje que puede usar con Azure, incluido Azure App Service.</p>
+
+    <h3>Azure App Service</h3>
+    <p>App Service permite crear y hospedar aplicaciones web, trabajos en segundo plano, back-ends móviles y API RESTful en el lenguaje de programación que prefiera, sin tener que administrar la infraestructura. Ofrece escalado automático y alta disponibilidad. App Service admite Windows y Linux. Permite implementaciones automatizadas desde GitHub, Azure DevOps o cualquier repositorio Git para admitir un modelo de implementación continua.
+
+    Azure App Service es una opción de hospedaje sólida que puede usar para hospedar las aplicaciones en Azure. Azure App Service le permite centrarse en la creación y el mantenimiento de la aplicación, y Azure se centra en mantener el entorno en funcionamiento.
+    
+    Azure App Service es un servicio basado en HTTP para hospedar aplicaciones web, API de REST y back-ends para dispositivos móviles. Admite varios lenguajes, incluidos .NET, .NET Core, Java, Ruby, Node.js, PHP o Python. También admite entornos de Windows y Linux.</p>
+
+    <h3>Tipos de servicios de aplicaciones</h3>
+
+    <ul>
+        <li>Aplicaciones web</li>
+        <li>Aplicaciones de API</li>
+        <li>Trabajos web</li>
+        <li>Aplicaciones móviles</li>
+    </ul>
+
+    <p>App Service controla la mayoría de las decisiones sobre la infraestructura que se tratan en el hospedaje de aplicaciones accesibles desde la web:</p>
+
+    <ul>
+        <li>La implementación y administración se integran en la plataforma.</li>
+        <li>Los puntos de conexión se pueden proteger.</li>
+        <li>Los sitios se pueden escalar rápidamente para controlar cargas de tráfico elevado.</li>
+        <li>El equilibrio de carga integrado y el administrador de tráfico proporcionan alta disponibilidad.</li>
+    </ul>
+
+    <p>Todos estos estilos de aplicación se hospedan en la misma infraestructura y comparten estas ventajas. Esto convierte a App Service en la elección ideal para hospedar aplicaciones orientadas a la web.</p>
+
+    <h3>Aplicaciones web</h3>
+    <p>App Service incluye compatibilidad completa para hospedar aplicaciones web mediante ASP.NET, ASP.NET Core, Java, Ruby, Node.js, PHP o Python. Puede elegir Windows o Linux como sistema operativo del host.</p>
+
+    <h3>Aplicaciones de API</h3>
+
+    <p>Al igual que al hospedar un sitio web, puede compilar API web basadas en REST mediante el lenguaje y el marco que prefiera. Se obtiene compatibilidad completa con Swagger y la posibilidad de empaquetar y publicar la API en Azure Marketplace. Las aplicaciones producidas se pueden consumir desde cualquier cliente basado en HTTP o HTTPS.</p>
+
+    <h3>Trabajos web</h3>
+
+    <p>Se puede usar la característica WebJobs para ejecutar un programa (.exe, Java, PHP, Python o Node.js) o un script (.cmd, .bat, PowerShell o Bash) en el mismo contexto que una aplicación web, aplicación de API o aplicación móvil. Los puede programar o ejecutar un desencadenador. Los trabajos web suelen usarse para ejecutar tareas en segundo plano como parte de la lógica de aplicación.</p>
+
+    <h3>Aplicaciones móviles</h3>
+
+    <p>Use la característica Mobile Apps de App Service a fin de compilar rápidamente un back-end para aplicaciones iOS y Android. Con unos pocos clics en el Portal de Azure, puede realizar lo siguiente:</p>
+
+    <ul>
+        <li>Almacenar los datos de aplicaciones móviles en una base de datos SQL basada en la nube.</li>
+        <li>Autenticar a clientes con proveedores sociales comunes, como MSA, Google, Twitter y Facebook.</li>
+        <li>Enviar notificaciones de inserción.</li>
+        <li>Ejecutar lógica de back-end personalizada en C# o Node.js.</li>
+    </ul>
+
+    <h2>Descripción de las redes virtuales de Azure</h2>
+    <p>Las redes virtuales y las subredes virtuales de Azure permiten a los recursos de Azure, como las máquinas virtuales, las aplicaciones web y las bases de datos, comunicarse entre sí, con los usuarios de Internet y con los equipos cliente en el entorno local. Una red de Azure se puede considerar una extensión de la red local con recursos que vinculan otros recursos de Azure.
+
+    Las redes virtuales de Azure proporcionan las importantes funcionalidades de red siguientes:</p>
+
+    <ul>
+        <li>Aislamiento y segmentación</li>
+        <li>Comunicación con Internet</li>
+        <li>Comunicación entre recursos de Azure</li>
+        <li>Comunicación con los recursos locales</li>
+        <li>Enrutamiento del tráfico de red</li>
+        <li>Filtrado del tráfico de red</li>
+        <li>Conexión de redes virtuales</li>
+    </ul>
+
+    <p>Las redes virtuales de Azure admiten puntos de conexión públicos y privados para permitir la comunicación entre recursos externos o internos con otros recursos internos.</p>
+
+    <ul>
+        <li>Los puntos de conexión públicos tienen una dirección IP pública y son accesibles desde cualquier parte del mundo.</li>
+        <li>Los puntos de conexión privados existen dentro de una red virtual y tienen una dirección IP privada en el espacio de direcciones de esa red virtual.</li>
+    </ul>
+
+    <h3>Aislamiento y segmentación</h3>
+
+    <p>La red virtual de Azure permite crear varias redes virtuales aisladas. Al configurar una red virtual, se define un espacio de direcciones IP privadas con intervalos de direcciones IP públicas o privadas. El intervalo IP solo existe dentro de la red virtual y no es enrutable en Internet. Después, puede dividir ese espacio de direcciones IP en subredes y asignar parte del espacio de direcciones definido a cada subred con nombre.
+
+    Para la resolución de nombres, puede usar el servicio de resolución de nombres integrado en Azure. También puede configurar la red virtual para que use un servidor DNS interno o externo.</p>
+
+    <h3>Comunicación con Internet</h3>
+    <p>
+        Puede permitir conexiones entrantes desde Internet mediante la asignación de una dirección IP pública a un recurso de Azure o la colocación del recurso detrás de un equilibrador de carga público.
+    </p>
+
+    <h3>Comunicación entre los recursos de Azure</h3>
+
+    <p>
+        Le interesará habilitar los recursos de Azure para que se comuniquen entre sí de forma segura. Puede hacerlo de dos maneras:
+    </p>
+
+    <ul>
+        <li>Las redes virtuales no solo pueden conectar máquinas virtuales, sino también otros recursos de Azure, como App Service Environment para Power Apps, Azure Kubernetes Service y conjuntos de escalado de máquinas virtuales de Azure.</li>
+        <li>Los puntos de conexión de servicio se pueden conectar a otros tipos de recursos de Azure, como cuentas de almacenamiento y bases de datos de Azure SQL. Este enfoque permite vincular varios recursos de Azure con las redes virtuales para mejorar la seguridad y proporcionar un enrutamiento óptimo entre los recursos.</li>
+    </ul>
+
+    <h3>Comunicación con recursos locales</h3>
+    <p>
+        Las redes virtuales de Azure permiten vincular entre sí los recursos del entorno local y dentro de la suscripción de Azure. De hecho, puede crear una red que abarque tanto el entorno local como el entorno en la nube. Existen tres mecanismos para lograr esta conectividad:
+    </p>
+
+    <ul>
+        <li>Las conexiones de red privada virtual de punto a sitio se establecen desde un equipo ajeno a la organización a la red corporativa. En este caso, el equipo cliente inicia una conexión VPN cifrada para conectarse a la red virtual de Azure.</li>
+        <li>Las redes virtuales privadas de sitio a sitio vinculan el dispositivo o puerta de enlace de VPN local con la puerta de enlace de VPN de Azure en una red virtual. De hecho, puede parecer que los dispositivos de Azure están en la red local. La conexión se cifra y funciona a través de Internet.</li>
+        <li>Azure ExpressRoute proporciona una conectividad privada dedicada a Azure que no se desplaza por Internet. ExpressRoute es útil para los entornos donde se necesita más ancho de banda e incluso mayores niveles de seguridad.</li>
+    </ul>
+
+    <h3>Enrutamiento del tráfico de red</h3>
+
+    <p>
+        De forma predeterminada, Azure enruta el tráfico entre las subredes de todas las redes virtuales conectadas, las redes locales e Internet. También puede controlar el enrutamiento e invalidar esa configuración del siguiente modo:
+    </p>
+
+    <ul>
+        <li>Las tablas de rutas permiten definir reglas sobre cómo se debe dirigir el tráfico. Puede crear tablas de rutas personalizadas que controlen cómo se enrutan los paquetes entre las subredes.</li>
+        <li>El Protocolo de puerta de enlace de borde (BGP) funciona con puertas de enlace de VPN de Azure, Azure Route Server o Azure ExpressRoute para propagar las rutas BGP locales a las redes virtuales de Azure.</li>
+    </ul>
+
+    <h3>Filtrado del tráfico de red</h3>
+    <p>Las redes virtuales de Azure permiten filtrar el tráfico entre las subredes mediante los métodos siguientes:</p>
+
+    <ul>
+        <li>Los grupos de seguridad de red son recursos de Azure que pueden contener varias reglas de seguridad de entrada y salida. Estas reglas se pueden definir para permitir o bloquear el tráfico en función de factores como el protocolo, el puerto y las direcciones IP de destino y origen.</li>
+        <li>Las aplicaciones virtuales de red son máquinas virtuales especializadas que se pueden comparar con un dispositivo de red protegido. Una aplicación virtual de red ejerce una función de red determinada, como ejecutar un firewall o realizar la optimización de la red de área extensa (WAN).</li>
+    </ul>
+    <h3>Conexión de redes virtuales</h3>
+    <p>
+        Puede vincular redes virtuales entre sí mediante el emparejamiento de red virtual. El emparejamiento permite que dos redes virtuales se conecten directamente entre sí. El tráfico de red entre redes emparejadas es privado y se desplaza por la red troncal de Microsoft, y nunca entra en la red pública de Internet. El emparejamiento permite que los recursos de cada red virtual se comuniquen entre sí. Estas redes virtuales pueden estar en regiones distintas, lo que permite crear una red global interconectada con Azure.
+
+        Las rutas definidas por el usuario (UDR) permiten controlar las tablas de enrutamiento entre subredes dentro de una red virtual o entre redes virtuales. Esto permite un mayor control sobre el flujo de tráfico de red.
+    </p>
+
+    <h2>Ejercicio: Configuración del acceso de red</h2>
+
+    <p>Para comprobar que la máquina virtual que creó anteriormente todavía se está ejecutando, use el siguiente comando:</p>
+
+    <pre>
+        az vm list
+    </pre>
+
+    <p>Si recibe una respuesta vacía [], debe completar de nuevo el primer ejercicio de este módulo. Si el resultado muestra la máquina virtual actual y su configuración, puede continuar.
+
+        En este momento, la máquina virtual que ha creado y en la que ha instalado Nginx no es accesible desde Internet. Crearás un grupo de seguridad de red que lo cambiará y permitirá el acceso HTTP de entrada en el puerto 80.
+    </p>
+
+    <h3>Tarea 1: Acceso al servidor web</h3>
+
+    <p>En este procedimiento se obtiene la dirección IP de la máquina virtual y se intenta acceder a la página principal del servidor web.</p>
+
+    <ol>
+        <li>Ejecute el siguiente comando az vm list-ip-addresses para obtener la dirección IP de la máquina virtual y almacenar el resultado como una variable de Bash:</li>
+
+        <pre>
+            IPADDRESS="$(az vm list-ip-addresses --resource-group "learn-0b1868b3-ae11-4882-821f-fbbc0143c303" 
+            --name my-vm --query "[].virtualMachine.network.publicIpAddresses[*].ipAddress" --output tsv)"
+        </pre>
+
+        <li>Ejecuta el siguiente comando curl para descargar la página principal:</li>
+
+        <pre>
+            curl --connect-timeout 5 http://$IPADDRESS
+        </pre>
+
+        <p>El argumento --connect-timeout especifica que se conceden hasta cinco segundos para que se produzca la conexión. Después de cinco segundos, verás un mensaje de error que indica que se ha agotado el tiempo de espera de la conexión:</p>
+
+        <li>Como paso opcional, intenta acceder al servidor web desde un explorador:</li>
+
+        <p>Ejecuta lo siguiente para imprimir la dirección IP de la máquina virtual en la consola:</p>
+
+        <pre>
+            echo $IPADDRESS
+        </pre>
+
+        <p>Copia en el portapapeles la dirección IP que vea.
+
+            Abre una nueva pestaña del explorador y vayas al servidor web. Transcurridos unos instantes, verás que la conexión no se está produciendo. Si esperas a que se agote el tiempo de espera del explorador, verás algo parecido a esto:</p>
+    </ol>
+
+    <h3>Tarea 2: Enumeración de las reglas de grupo de seguridad de red actuales</h3>
+
+    <ol>
+        <li>Ejecuta el siguiente comando az network nsg list para que muestre los grupos de seguridad de red asociados a la máquina virtual:</li>
+
+        <pre>
+            az network nsg list --resource-group "learn-0b1868b3-ae11-4882-821f-fbbc0143c303" 
+            --query '[].name' --output tsv
+        </pre>
+
+        <p>Cada máquina virtual de Azure está asociada a, al menos, un grupo de seguridad de red. En este caso, Azure te creó un grupo de seguridad de red denominadomy-vmNSG.</p>
+
+        <li>Ejecuta el siguiente comando az network nsg rule list mostrar las reglas asociadas al grupo de seguridad de red denominado my-vmNSG:</li>
+
+        <pre>
+            az network nsg rule list \
+            --resource-group "learn-0b1868b3-ae11-4882-821f-fbbc0143c303" \
+            --nsg-name my-vmNSG
+        </pre>
+
+        <p>Verás un bloque grande de texto en formato JSON en la salida. En el paso siguiente, ejecutarás un comando similar que facilita la lectura de este resultado.</p>
+        
+        <li>
+            Ejecuta por segunda vez el comando az network nsg rule list. Esta vez, use el argumento --query para recuperar solo el nombre, la prioridad, los puertos afectados y el acceso (Permitir o Denegar) para cada regla. El argumento --output da formato a la salida como una tabla para que sea fácil de leer.
+        </li>
+
+        <pre>
+            az network nsg rule list --resource-group "learn-0b1868b3-ae11-4882-821f-fbbc0143c303" 
+            --nsg-name my-vmNSG --query '[].{Name:name, Priority:priority, Port:destinationPortRange, Access:access}' 
+            --output table
+        </pre>
+
+        <pre>
+            Verás la regla predeterminada default-allow-ssh. Esta regla permite conexiones entrantes a través del puerto 22 (SSH). 
+            SSH (Secure Shell) es un protocolo que se usa en Linux para permitir que los administradores accedan 
+            al sistema de forma remota. La prioridad de esta entrada es 1000. 
+            Las reglas se procesan en orden de prioridad, donde los números más bajos se procesan antes que los números más altos.
+        </pre>
+
+        <p>De forma predeterminada, un grupo de seguridad de red de una máquina virtual de una máquina virtual Linux solo permite el acceso a la red en el puerto 22. Esto permite que los administradores accedan al sistema. También debe permitir las conexiones entrantes en el puerto 80, que permite el acceso a través de HTTP.</p>
+    </ol>
+
+    <h3>Tarea 3: Creación de la regla de seguridad de red</h3>
+    <p>En este caso, crearás una regla de seguridad de red que permita el acceso de entrada en el puerto 80 (HTTP).</p>
+
+    <ol>
+        <li>Ejecute el siguiente comando az network nsg rule create para crear una regla denominada allow-http que permita el acceso entrante en el puerto 80:</li>
+
+        <pre>
+            az network nsg rule create --resource-group "learn-0b1868b3-ae11-4882-821f-fbbc0143c303" 
+            --nsg-name my-vmNSG --name allow-http --protocol tcp --priority 100 --destination-port-range 80 --access Allow
+        </pre>
+
+        <p>
+            Con fines de aprendizaje, aquí establecerá la prioridad en 100. En este caso, la prioridad no importa. Tendriás que tener en cuenta la prioridad si tuvieras intervalos de puertos superpuestos
+        </p>
+
+        <li>Para comprobar la configuración, ejecuta az network nsg rule list para ver la lista actualizada de reglas:</li>
+
+        <pre>
+            az network nsg rule list --resource-group "learn-0b1868b3-ae11-4882-821f-fbbc0143c303" 
+            --nsg-name my-vmNSG --query '[].{Name:name, Priority:priority, Port:destinationPortRange, Access:access}' --output table
+        </pre>
+    </ol>
+
+    <h3>Tarea 4: Nuevo acceso al servidor web</h3>
+
+    <ol>
+        <li>Ejecuta el mismo comando curl que has ejecutado antes:</li>
+        <pre>curl --connect-timeout 5 http://$IPADDRESS</pre>
+    </ol>
+    <p>Buen trabajo. En la práctica, puedes crear un grupo de seguridad de red independiente que incluya las reglas de acceso de red entrantes y salientes que necesite. Si tienes varias máquinas virtuales que tienen el mismo propósito, puedes asignar ese grupo de seguridad de red a cada máquina virtual en el momento de crearla. Esta técnica permite controlar el acceso de red a varias máquinas virtuales en un único conjunto central de reglas.</p>
+
+    <h3>Limpieza</h3>
+
+    <p>El espacio aislado limpia los recursos automáticamente cuando haya terminado con este módulo.
+
+    Al trabajar en una suscripción propia, se recomienda identificar al final de un proyecto si aún necesita los recursos creados. Los recursos que dejas en ejecución pueden costar dinero. Puede eliminar los recursos de forma individual o eliminar el grupo de recursos para eliminar todo el conjunto de recursos.</p>
+
+    <h2>Descripción de redes privadas virtuales de Azure</h2>
+
+    <p>
+        Una red privada virtual (VPN) usa un túnel cifrado en otra red. Normalmente, las VPN se implementan para conectar entre sí dos o más redes privadas de confianza a través de una red que no es de confianza (normalmente, la red pública de Internet). El tráfico se cifra mientras viaja por la red que no es de confianza para evitar ataques de interceptación o de otro tipo. Las VPN pueden permitir que las redes compartan información confidencial de forma segura.
+    </p>
+
+    <h3>Puertas de enlace de VPN</h3>
+
+    <p>
+        Una puerta de enlace de VPN es un tipo de puerta de enlace de red virtual. Las instancias de Azure VPN Gateway se implementan en una subred dedicada de la red virtual y permiten la conectividad siguiente:
+    </p>
+
+    <ul>
+        <li>Conectar los centros de datos locales a redes virtuales a través de una conexión de sitio a sitio.</li>
+        <li>Conectar los dispositivos individuales a redes virtuales a través de una conexión de punto a sitio.</li>
+        <li>Conectar las redes virtuales a otras redes virtuales a través de una conexión entre redes.</li>
+    </ul>
+
+    <p>Todas las transferencias de datos se cifran en un túnel privado mientras atraviesan Internet. Solo se puede implementar una única instancia de puerta de enlace de VPN en cada red virtual. Sin embargo, se puede usar una puerta de enlace para conectarse a varias ubicaciones, que incluye otras redes virtuales o centros de datos locales.
+
+        Al configurar una instancia de VPN Gateway, debe especificar el tipo de red privada virtual, es decir, basada en directivas o basada en rutas. La distinción principal entre estos dos tipos es cómo determinan qué tráfico necesita cifrado. En Azure, independientemente del tipo de red privada virtual, el método de autenticación que se emplea es una clave previamente compartida.
+    </p>
+
+    <ul>
+        <li>Las instancias de VPN Gateway basadas en directivas especifican de forma estática la dirección IP de los paquetes que se deben cifrar a través de cada túnel. Este tipo de dispositivo evalúa cada paquete de datos en función de los conjuntos de direcciones IP para elegir el túnel a través del cual se va a enviar el paquete.</li>
+        <li>En las puertas de enlace basadas en rutas, los túneles IPSec se modelan como una interfaz de red o una interfaz de túnel virtual. El enrutamiento IP (ya sean rutas estáticas o protocolos de enrutamiento dinámico) decide cuál de estas interfaces de túnel se va a usar al enviar cada paquete. Las redes privadas virtuales basadas en rutas son el método preferido para conectar dispositivos locales. Son más resistentes a los cambios de la topología, como la creación de subredes.</li>
+    </ul>
+
+    <p>Si necesita alguno de los siguientes tipos de conectividad, use una instancia de VPN Gateway basada en rutas:</p>
+
+    <ul>
+        <li>Conexiones entre redes virtuales</li>
+        <li>Conexiones de punto a sitio</li>
+        <li>Conexiones de varios sitios</li>
+        <li>Coexistencia con una puerta de enlace de Azure ExpressRoute</li>
+    </ul>
+
+    <h3>Escenarios de alta disponibilidad</h3>
+    <p>Si va a configurar una VPN para mantener la información segura, también querrá asegurarse de que es una configuración de VPN de alta disponibilidad y tolerante a errores. Hay varias maneras de maximizar la resistencia de la puerta de enlace de VPN.
+
+    </p>
+
+    <h3>Configuración de activo-en espera</h3>
+    <p>
+        De forma predeterminada, las instancias de VPN Gateway se implementan como dos instancias en una configuración de activo-en espera, incluso si solo ve un recurso de VPN Gateway en Azure. Cuando el mantenimiento planeado o la interrupción imprevista afectan a la instancia activa, la instancia en espera asume de forma automática la responsabilidad de las conexiones sin ninguna intervención del usuario. Durante esta conmutación por error, las conexiones se interrumpen, pero por lo general se restauran en cuestión de segundos si se trata del mantenimiento planeado y en un plazo de 90 segundos en el caso de las interrupciones imprevistas.
+    </p>
+
+    <h3>Activo/activo</h3>
+    <p>
+        Al incorporar compatibilidad con el protocolo de enrutamiento de BGP, también puede implementar puertas de enlace VPN en una configuración del tipo activo/activo. En esta configuración, se asigna una IP pública única a cada instancia. Después, se crean túneles independientes desde el dispositivo local a cada dirección IP. Se puede ampliar la alta disponibilidad mediante la implementación de un dispositivo VPN local adicional.
+    </p>
+
+    <h3>Conmutación por error de ExpressRoute</h3>
+
+    <p>
+        Otra opción de alta disponibilidad consiste en configurar una instancia de VPN Gateway como una ruta segura de conmutación por error para las conexiones ExpressRoute. Los circuitos ExpressRoute tienen resistencia integrada. Sin embargo, no son inmunes a los problemas físicos que afectan a los cables que entregan conectividad ni a las interrupciones que afectan a la ubicación completa de ExpressRoute. En escenarios de alta disponibilidad, en los que existe un riesgo asociado a una interrupción de un circuito ExpressRoute, también puede aprovisionar una instancia de VPN Gateway que usa Internet como un método alternativo de conectividad. De este modo, puede garantizar que siempre haya una conexión a las redes virtuales.
+    </p>
+
+    <h3>Puertas de enlace con redundancia de zona</h3>
+
+    <p>
+        En las regiones que admiten zonas de disponibilidad, se pueden implementar puertas de enlace VPN y ExpressRoute en una configuración con redundancia de zona. Esta configuración aporta una mayor disponibilidad, escalabilidad y resistencia a las puertas de enlace de red virtual. Implementar puertas de enlace en Azure Availability Zones separa de forma física y lógica las puertas de enlace dentro de una región, al mismo tiempo que protege la conectividad de red local en Azure de errores de nivel de zona. Estas puertas de enlace requieren diferentes referencias de almacén (SKU) de puerta de enlace y usan direcciones IP públicas estándar en lugar de direcciones IP públicas básicas.
+    </p>
+
+    <h2>Describir Azure ExpressRoute</h2>
+
+    <p>ExpressRoute le permite ampliar las redes locales a la nube de Microsoft mediante una conexión privada con la ayuda de un proveedor de conectividad. Esta conexión se denomina circuito ExpressRoute. Con ExpressRoute, puede establecer conexiones con servicios en la nube de Microsoft, como Microsoft Azure y Microsoft 365. Esto le permite conectar oficinas, centros de datos u otras instalaciones a la nube de Microsoft. Cada ubicación tendría su propio circuito ExpressRoute.
+
+        La conectividad puede ser desde una red de conectividad universal (IP VPN), una red Ethernet de punto a punto o una conexión cruzada virtual a través de un proveedor de conectividad en una instalación de ubicación compartida. Las conexiones de ExpressRoute no pasan por la red pública de Internet. Esto permite a las conexiones de ExpressRoute ofrecer más confiabilidad, más velocidad, latencia coherentes y mayor seguridad que las conexiones normales a través de Internet.
+    </p>
+
+    <h3>Características y ventajas de ExpressRoute</h3>
+
+    <ul>
+        <li>Conectividad a servicios en la nube de Microsoft en todas las regiones dentro de la región geopolítica.</li>
+        <li>Conectividad global a los servicios de Microsoft en todas las regiones con Global Reach de ExpressRoute.</li>
+        <li>Enrutamiento dinámico entre la red y Microsoft a través del Protocolo de puerta de enlace de borde (BGP).</li>
+        <li>Redundancia integrada en todas las ubicaciones de configuración entre pares para una mayor confiabilidad.</li>
+    </ul>
+
+    <h3>Conectividad con los Servicios en la nube de Microsoft</h3>
+    <p>ExpressRoute permite el acceso directo a los siguientes servicios en todas las regiones:</p>
+
+    <ul>
+        <li>Microsoft Office 365</li>
+        <li>Microsoft Dynamics 365</li>
+        <li>Servicios de proceso de Azure, como Azure Virtual Machines</li>
+        <li>Servicios en la nube de Azure, como Azure Cosmos DB y Azure Storage</li>
+    </ul>
+
+    <h3>Conectividad global</h3>
+    <p>Puede permitir que Global Reach de ExpressRoute intercambie datos entre los sitios locales si conecta los diferentes circuitos ExpressRoute. Por ejemplo, supongamos que tiene una oficina en Asia y un centro de datos en Europa, ambos con circuitos ExpressRoute que los conectan a la red de Microsoft. Puede usar Global Reach de ExpressRoute para conectar esas dos instalaciones, lo que les permite comunicarse sin transferir datos a través de la red pública de Internet.</p>
+
+    <h3>Enrutamiento dinámico</h3>
+    <p>
+        ExpressRoute usa el BGP. BGP se usa para intercambiar rutas entre las redes locales y los recursos que se ejecutan en Azure. Este protocolo permite el enrutamiento dinámico entre la red local y los servicios que se ejecutan en la nube de Microsoft.
+    </p>
+
+    <h3>Redundancia integrada</h3>
+    <p>
+        Cada proveedor de conectividad usa dispositivos redundantes para garantizar que las conexiones establecidas con Microsoft tengan alta disponibilidad. Puede configurar varios circuitos para complementar esta característica.
+    </p>
+
+    <h3>Modelos de conectividad de ExpressRoute</h3>
+    <ul>
+        <li>Ubicación de CloudExchange</li>
+        <li>Conexión Ethernet de punto a punto</li>
+        <li>Conexión universal</li>
+        <li>Directamente desde sitios de ExpressRoute</li>
+    </ul>
+
+    <h3>
+        Ubicación compartida en un intercambio en la nube
+    </h3>
+
+    <p>La ubicación conjunta hace referencia al centro de datos, la oficina u otras instalaciones que se encuentran físicamente en un intercambio en la nube, como un ISP. Si la instalación tiene la ubicación compartida en un intercambio en la nube, puede solicitar una conexión cruzada virtual a la nube de Microsoft.</p>
+
+    <h3>Conexión Ethernet de punto a punto</h3>
+    <p>
+        La conexión Ethernet de punto a punto hace referencia al uso de una conexión punto a punto para conectar la instalación a la nube de Microsoft.
+    </p>
+
+    <h3>Redes universales</h3>
+    <p>
+        Con la conectividad universal, puede integrar la red de área extensa (WAN) con Azure si proporciona conexiones a las oficinas y los centros de datos. Azure se integra con la conexión WAN para proporcionarle una conexión, como la que tendría entre el centro de datos y las sucursales.
+    </p>
+
+    <h3>Directamente desde sitios de ExpressRoute</h3>
+    <p>
+        Puede conectarse directamente a la red global de Microsoft en una ubicación de emparejamiento distribuida estratégicamente por todo el mundo. ExpressRoute Direct proporciona conectividad dual de 100 Gbps o 10 Gbps, que es compatible con la conectividad activa/activa a escala.
+    </p>
+
+    <h3>Consideraciones sobre la seguridad</h3>
+    <p>
+        Con ExpressRoute los datos no viajan a través de la red pública de Internet y, por tanto, no se exponen a los posibles riesgos asociados a las comunicaciones de Internet. ExpressRoute es una conexión privada de la infraestructura local a la infraestructura de Azure. Incluso si tiene una conexión ExpressRoute, las consultas de DNS, la comprobación de la lista de revocación de certificados y las solicitudes de Azure Content Delivery Network se siguen enviando a través de la red pública de Internet.
+    </p>
+
+    <h2>Describir Azure DNS</h2>
+
+    <p>
+        Azure DNS es un servicio de hospedaje para dominios DNS que ofrece resolución de nombres mediante la infraestructura de Microsoft Azure. Al hospedar dominios en Azure, puede administrar los registros DNS con las mismas credenciales, API, herramientas y facturación que con los demás servicios de Azure.
+    </p>
+
+    <h3>Ventajas de Azure DNS</h3>
+
+    <ul>
+        <li>Confiabilidad y rendimiento</li>
+        <li>Seguridad</li>
+        <li>Facilidad de uso</li>
+        <li>Redes virtuales personalizables</li>
+        <li>Registros de alias</li>
+    </ul>
+
+    <h3>Confiabilidad y rendimiento</h3>
+
+    <p>
+        Los dominios DNS de Azure DNS se hospedan en la red global de servidores de nombres DNS de Azure, y proporcionan resistencia y alta disponibilidad. Azure DNS usa redes de difusión por proximidad para que el servidor DNS más próximo disponible responda a cada consulta de DNS para proporcionar un mejor rendimiento y una mayor disponibilidad para el dominio.
+    </p>
+
+    <h3>Seguridad</h3>
+
+    <ul>
+        <li>Control de acceso basado en rol de Azure (Azure RBAC) para controlar quién accede a acciones específicas en la organización.</li>
+        <li>Registros de actividad: para supervisar cómo un usuario de su organización modificó un recurso o para encontrar errores al solucionar problemas.</li>
+        <li>Bloqueo de recursos para bloquear una suscripción, un grupo de recursos o un recurso. Los bloqueos impiden que otros usuarios de la organización eliminen o modifiquen de forma accidental recursos críticos.</li>
+    </ul>
+
+    <h3>Facilidad de uso</h3>
+    <p>
+        Azure DNS puede administrar registros DNS para los servicios de Azure y también proporciona el servicio de nombres de dominio para los recursos externos. Azure DNS está integrado en Azure Portal y usa las mismas credenciales, la misma facturación y el mismo contrato de soporte técnico que los demás servicios de Azure.
+
+        Como Azure DNS se ejecuta en Azure, significa que puede administrar los dominios y registros con Azure Portal, cmdlets de Azure PowerShell y la CLI de Azure multiplataforma. Las aplicaciones que requieren la administración automática de DNS se pueden integrar con el servicio mediante las API REST y los SDK.
+    </p>
+
+    <h3>Redes virtuales personalizables con dominios privados</h3>
+    <p>
+        Azure DNS es compatible con dominios DNS privados. Esta característica permite usar nombres de dominio personalizados propios en las redes virtuales privadas, en lugar de limitarse a los nombres proporcionados por Azure.
+    </p>
+
+    <h3>Registros de alias</h3>
+
+    <p>Azure DNS también admite conjuntos de registros de alias. Puede usar un conjunto de registros de alias que haga referencia a un recurso de Azure, como una dirección IP pública de Azure, un perfil de Azure Traffic Manager o un punto de conexión de Azure Content Delivery Network (CDN). Si cambia la dirección IP del recurso subyacente, el conjunto de registros de alias se actualiza sin problemas durante la resolución DNS. El conjunto de registros de alias apunta a la instancia de servicio, y la instancia de servicio está asociada con una dirección IP.</p>
+
+    <pre>
+        Importante
+
+        No se puede usar Azure DNS para comprar un nombre de dominio. Por una tarifa anual, 
+        puede comprar un nombre de dominio mediante dominios de App Service o un registrador de nombres de dominio de terceros. 
+        Después de comprarlos, los dominios se pueden hospedar en Azure DNS para la administración de registros.
+    </pre>
+
+    <img src="./img/5/1.PNG" alt="">
+</body>
+</html>
