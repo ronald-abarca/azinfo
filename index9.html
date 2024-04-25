@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <a href="index.html">parte 1</a>
+    <a href="index2.html">parte 2</a>
+    <a href="index3.html">parte 3</a>
+    <a href="index4.html">parte 4</a>
+    <a href="index5.html">parte 5</a>
+    <a href="index6.html">parte 6</a>
+    <a href="index7.html">parte 7</a>
+    <a href="index8.html">parte 8</a>
+    <a href="index9.html">parte 9</a>
+    <h2>Descripción de las características y herramientas de Azure para la gobernanza y el cumplimiento</h2>
+    <h2>Introducción</h2>
+    <p>
+        En este módulo, se le presentarán algunas de las características y herramientas que puede usar para ayudar con la gobernanza de su entorno de Azure. También obtendrá información sobre las herramientas que puede usar para ayudar a mantener los recursos de acuerdo con los requisitos corporativos o normativos.
+    </p>
+
+    <ul>
+        <li>Descripción del propósito de Microsoft Purview.</li>
+        <li>Descripción del propósito de Azure Policy</li>
+        <li>Descripción del propósito de bloqueos de recursos</li>
+        <li>Descripción de las ventajas del portal de confianza de servicios</li>
+    </ul>
+
+    <h2>Descripción del propósito de Microsoft Purview</h2>
+    <p>
+        Microsoft Purview es una familia de soluciones de gobernanza, riesgo y cumplimiento de datos que le ayudan a obtener una sola visión unificada de los datos. Microsoft Purview reúne información sobre los datos locales, multinube y software como servicio.
+
+Con Microsoft Purview, puede mantenerse al día en su entorno de datos gracias a:
+    </p>
+
+    <ul>
+        <li>Detección de datos automatizada</li>
+        <li>Clasificación de datos confidenciales</li>
+        <li>Linaje de datos de un extremo a otro</li>
+    </ul>
+
+    <p>
+        Dos áreas de solución principales comprenden Microsoft Purview: el riesgo y el cumplimiento y la gobernanza unificada de datos.
+    </p>
+
+    <img src="./img/9/1.png" alt="" style="width: 30%;">
+
+    <h3>Soluciones de riesgo y cumplimiento de Microsoft Purview</h3>
+
+    <p>
+        Características de Microsoft 365 como componente principal de las soluciones de cumplimiento y riesgos de Microsoft Purview. Microsoft Teams, OneDrive y Exchange son solo algunos de los servicios de Microsoft 365 que Microsoft Purview usa para ayudar a administrar y supervisar los datos. Microsoft Purview, mediante la administración y supervisión de los datos, puede ayudar a su organización a:
+    </p>
+
+    <ul>
+        <li>Proteger datos confidenciales en nubes, aplicaciones y dispositivos.</li>
+        <li>Identificar los riesgos de datos y administrar los requisitos de cumplimiento normativo.</li>
+        <li>Comenzar a usar el cumplimiento normativo.</li>
+    </ul>
+
+    <h3>Gobernanza unificada de datos</h3>
+    <p>
+        Microsoft Purview proporciona una solución unificada de gobernanza de datos que le ayuda a administrar y gobernar los datos locales, de varias nubes y de software como servicio (SaaS). Las sólidas funcionalidades de gobernanza de datos de Microsoft Purview le permiten administrar los datos almacenados en bases de datos de Azure, SQL y Hive, localmente e incluso en otras nubes, como Amazon S3.
+
+La gobernanza unificada de datos de Microsoft Purview ayuda a su organización a:
+    </p>
+    
+    <ul>
+        <li>Crear un mapa actualizado de todo el patrimonio de datos que incluya la clasificación de datos y el linaje de un extremo a otro.</li>
+        <li>Identificar dónde se almacenan los datos confidenciales en su patrimonio.</li>
+        <li>Crear un entorno seguro para que los consumidores de datos encuentren datos valiosos.</li>
+        <li>Generar información sobre cómo se almacenan y usan los datos.</li>
+        <li>Administrar el acceso a los datos de su patrimonio de forma segura y a gran escala.</li>
+
+    </ul>
+
+    <h2>Descripción del propósito de Azure Policy</h2>
+
+    <p>
+        ¿Cómo puede asegurarse de que estos recursos mantengan su cumplimiento? ¿Puede recibir un aviso cuando la configuración de un recurso cambie?
+
+Azure Policy es un servicio de Azure que permite crear, asignar y administrar directivas que controlan o auditan los recursos. Dichas directivas aplican distintas reglas en las configuraciones de los recursos para que esas configuraciones sigan cumpliendo con los estándares corporativos.
+    </p>
+
+    <h3>¿Cómo se definen directivas en Azure Policy?</h3>
+    <p>
+        Azure Policy permite definir tanto directivas individuales como grupos de directivas relacionadas, lo que se conoce como iniciativas. Azure Policy evalúa los recursos y resalta los que no cumplen las directivas que hemos creado. Azure Policy también puede impedir que se creen recursos no conformes.
+
+Las directivas de Azure se pueden establecer en cada nivel, lo que le permite establecer directivas en un recurso específico, un grupo de recursos, una suscripción, etc. Además, las directivas de Azure se heredan, por lo que si establece una directiva de nivel alto, se aplicará automáticamente a todas las agrupaciones que se encuentran dentro del elemento primario. Por ejemplo, si establece una directiva de Azure en un grupo de recursos, todos los recursos creados en ese grupo de recursos recibirán automáticamente la misma directiva.
+
+Azure Policy incluye definiciones de iniciativas y directivas integradas para categorías como Almacenamiento, Redes, Proceso, Centro de Seguridad y Supervisión. Por ejemplo, si define una directiva que permite usar exclusivamente un determinado tamaño para las máquinas virtuales (VM) en el entorno, esa directiva se invoca al crear una nueva máquina virtual y cada vez que se cambia el tamaño de las ya existentes. Azure Policy también evalúa y supervisa todas las máquinas virtuales actuales del entorno, incluidas las máquinas virtuales que se crearon antes de crear la directiva.
+
+En algunos casos, Azure Policy puede corregir automáticamente los recursos y configuraciones no conformes para garantizar la integridad del estado de los recursos. Por ejemplo, si todos los recursos de un determinado grupo de recursos deben etiquetarse con la etiqueta AppName y un valor de "SpecialOrders", Azure Policy aplicará automáticamente esa etiqueta si se ha quitado. Sin embargo, sigue conservando el control total del entorno. Si tiene un recurso específico que no desea que Azure Policy corrija automáticamente, puede marcar ese recurso como una excepción y la directiva no corregirá automáticamente ese recurso.
+
+Azure Policy se integra con Azure DevOps aplicando directivas de integración continua y canalización de entrega que competen a las fases de implementación anterior y posterior de las aplicaciones.
+    </p>
+
+    <h3>¿Qué son las iniciativas Azure Policy?</h3>
+
+    <p>
+        Una iniciativa de Azure Policy es una forma de agrupar las directivas relacionadas. La definición de iniciativa contiene todas las definiciones de directiva para facilitar el seguimiento del estado de cumplimiento de cara a un objetivo mayor.
+
+Por ejemplo, Azure Policy incluye una iniciativa denominada Habilitar la supervisión en Azure Security Center, Su objetivo es supervisar todas las recomendaciones de seguridad disponibles para todos los tipos de recursos de Azure en Azure Security Center.
+
+En esta iniciativa se incluyen las siguientes definiciones de directiva:
+    </p>
+
+    <ul>
+        <li>Supervisar base de datos SQL sin cifrar en Security Center: esta directiva supervisa servidores y bases de datos SQL sin cifrar.</li>
+        <li>Supervisión de los puntos vulnerables del sistema operativo en Security Center: esta directiva supervisa los servidores que no cumplen la línea base de la vulnerabilidad del sistema operativo configurada.</li>
+        <li>Supervisar la falta de Endpoint Protection en Security Center: esta directiva supervisa los servidores que no tienen instalado un agente de Endpoint Protection.</li>
+    </ul>
+
+    <p>
+        La iniciativa Habilitar la supervisión en Azure Security Center contiene más de 100 definiciones de directiva independientes, de hecho.
+    </p>
+
+    <h2>Descripción del propósito de bloqueos de recursos</h2>
+    <p>
+        Los bloqueos de recursos impiden que se eliminen o modifiquen recursos por error.
+
+Aun cuando haya directivas de control de acceso basado en roles de Azure (RBAC de Azure) en vigor, sigue existiendo el riesgo de que alguien con el nivel de acceso adecuado elimine recursos de nube críticos. Los bloqueos de recursos impiden que los recursos se eliminen o actualicen, según el tipo de bloqueo. Los bloqueos de recursos se pueden aplicar a recursos individuales, grupos de recursos o incluso a una suscripción completa. Los bloqueos de recursos se heredan, lo que significa que si coloca un bloqueo de recursos en un grupo de recursos, también se aplicará el bloqueo a todos los recursos dentro del grupo.
+    </p>
+
+    <h3>Tipos de bloqueos de recursos</h3>
+    <p>
+        Hay dos tipos de bloqueos de recursos, uno que impide que los usuarios eliminen un recurso y otro que impide que los usuarios lo cambien o eliminen.
+    </p>
+
+    <ul>
+        <li>Eliminar significa que los usuarios autorizados pueden leer y modificar un recurso, pero no eliminarlo.</li>
+        <li>ReadOnly significa que los usuarios autorizados solo pueden leer recursos, pero no actualizarlos ni eliminarlos. Aplicar este bloqueo es similar a restringir todos los usuarios autorizados a los permisos concedidos por el rol Lector.</li>
+    </ul>
+
+    <h3>¿Cómo se administran los bloqueos de recursos?</h3>
+    <p>
+        Los bloqueos de recursos se pueden administrar en Azure Portal, PowerShell, la CLI de Azure o con una plantilla de Azure Resource Manager.
+
+Para ver, agregar o eliminar bloqueos en Azure Portal, vaya a la sección Configuración del panel Configuración de cualquier recurso en Azure Portal.
+    </p>
+    <img src="./img/9/2.png" alt="" style="width: 30%;">
+
+    <h3>¿Cómo se elimina o cambia un recurso bloqueado?</h3>
+
+    <p>
+        Aunque los bloqueos impiden que se produzcan cambios por error, se pueden seguir realizando cambios realizando un proceso de dos pasos.
+
+Para modificar un recurso bloqueado, primero hay que quitar el bloqueo. Tras quitarlo, podemos aplicar cualquier acción que podamos realizar de acuerdo a nuestros permisos. Los bloqueos de recursos se aplican con independencia de los permisos RBAC. Es decir, aun siendo el propietario del recurso, tendremos que quitar el bloqueo antes de poder realizar la actividad bloqueada.
+    </p>
+
+    <h2>Ejercicio: Configuración de un bloqueo de recurso</h2>
+
+    <p>
+        En este ejercicio, creará un recurso y configurará un bloqueo de recursos. Las cuentas de almacenamiento son uno de los tipos más fáciles de bloqueos de recursos para ver rápidamente el impacto, por lo que usará una cuenta de almacenamiento para este ejercicio.
+
+Este ejercicio requiere que tenga su propia suscripción, lo que significa que deberá utilizar su suscripción de Azure para completar el ejercicio. Sin embargo, no se preocupe, todo el ejercicio se puede completar de forma gratuita con los servicios gratuitos durante 12 meses al registrarse para obtener una cuenta de Azure.
+
+Para obtener ayuda para registrar una cuenta de Azure, consulte el módulo Creación de una cuenta de Azure.
+
+Una vez que haya creado su cuenta gratuita, siga los pasos que se indican a continuación. Si no tiene una cuenta de Azure, puede revisar los pasos para ver el proceso para agregar un bloqueo de recursos simple a un recurso.
+    </p>
+
+    <h3>Tarea 1: Creación de un recurso</h3>
+
+    <p>Para aplicar un bloqueo de recursos, debe tener un recurso creado en Azure. La primera tarea se centra en la creación de un recurso que, a continuación, puede bloquear en las tareas posteriores.</p>
+    
+    <ol>
+        <li>Inicie sesión en Azure Portal en https://portal.azure.com.</li>
+
+        <li>Seleccione Crear un recurso.</li>
+
+        <li>En Categorías, seleccione Almacenamiento.</li>
+
+        <li>En Cuenta de almacenamiento, seleccione Crear.</li>
+
+        <li>En la pestaña Aspectos básicos del panel Crear cuenta de almacenamiento, rellene la siguiente información. Deje los valores predeterminados para todo lo demás.</li>
+
+        <table aria-label="Tabla 1" class="table">
+            <thead>
+            <tr>
+            <th><strong>Configuración</strong></th>
+            <th><strong>Valor</strong></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td>Resource group</td>
+            <td>Crear nuevo</td>
+            </tr>
+            <tr>
+            <td>Nombre de la cuenta de almacenamiento</td>
+            <td>Escriba un nombre de cuenta de almacenamiento único.</td>
+            </tr>
+            <tr>
+            <td>Ubicación</td>
+            <td>default</td>
+            </tr>
+            <tr>
+            <td>Rendimiento</td>
+            <td>Estándar</td>
+            </tr>
+            <tr>
+            <td>Redundancia</td>
+            <td>Almacenamiento con redundancia local (LRS)</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <li>Seleccione Revisar y crear para revisar la configuración de su cuenta de almacenamiento y permitir que Azure valide la configuración.</li>
+
+        <li>Una vez validada, seleccione Crear. Espere la notificación de que la cuenta se creó correctamente.</li>
+
+        <li>Seleccione Ir al recurso.</li>
+    </ol>
+
+    <h3>Tarea 2: Aplicación de un bloqueo de recursos de solo lectura</h3>
+
+    <p>En esta tarea, aplicará un bloqueo de solo lectura a la cuenta de almacenamiento. ¿Qué impacto cree que tendrá en la cuenta de almacenamiento?</p>
+
+    <ol>
+        <li>Desplácese hacia abajo hasta que encuentre la sección Configuración del panel de la izquierda de la pantalla.</li>
+
+        <li>Seleccione Bloqueos.</li>
+
+        <li>Seleccione +Agregar.</li>
+
+        <img src="./img/9/3.png" alt="" style="width: 30%;">
+
+        <li>Escriba el nombre del bloqueo.</li>
+
+        <li>Compruebe que el tipo de bloqueo está establecido en Solo lectura.</li>
+
+        <li>Seleccione Aceptar.</li>
+    </ol>
+
+    <h3>Tarea 3: Agregación de un contenedor a una cuenta de almacenamiento</h3>
+
+    <p>En esta tarea, agregará un contenedor a la cuenta de almacenamiento; este contenedor es donde puede almacenar los blob.</p>
+
+    <ol>
+        <li>Desplácese hacia arriba hasta que encuentre la sección Almacenamiento de datos del panel de la izquierda de la pantalla.</li>
+
+        <li>Seleccione Contenedores.</li>
+
+        <li>Seleccione + Contenedor.</li>
+
+        <img src="./img/9/4.png" alt="" style="width: 30%;">
+
+        <li>Escriba el nombre del contenedor y seleccione Crear.</li>
+
+        <li>Deberá recibir un mensaje de error: No se pudo crear el contenedor de almacenamiento.</li>
+
+        <img src="./img/9/5.png" alt="" style="width: 30%;">
+    </ol>
+
+    <pre>
+        Nota
+
+        El mensaje de error le informa de que no se pudo crear un contenedor de 
+        almacenamiento porque hay un bloqueo establecido. El bloqueo de solo lectura impide realizar 
+        cualquier operación de creación o actualización en la cuenta de almacenamiento, por lo que 
+        no puede crear un contenedor de almacenamiento.
+    </pre>
+
+    <h3>Tarea 4: Modificación del bloqueo de recursos y creación de un contenedor de almacenamiento</h3>
+
+    <ol>
+        <li>Desplácese hacia abajo hasta que encuentre la sección Configuración del panel de la izquierda de la pantalla.</li>
+
+        <li>Seleccione Bloqueos.</li>
+
+        <li>Seleccione el bloqueo de recursos de solo lectura que ha creado.</li>
+
+        <li>Cambie el tipo de bloqueo a Eliminar y seleccione Aceptar.</li>
+
+        <img src="./img/9/6.png" alt="" style="width: 30%;">
+
+        <li>Desplácese hacia arriba hasta que encuentre la sección Almacenamiento de datos del panel de la izquierda de la pantalla.</li>
+
+        <li>Seleccione Contenedores.</li>
+
+        <li>Seleccione + Contenedor.</li>
+
+        <li>Escriba el nombre del contenedor y seleccione Crear.</li>
+
+        <li>El contenedor de almacenamiento debe aparecer en la lista de contenedores.</li>
+    </ol>
+    <p>Ahora puede comprender cómo el bloqueo de solo lectura le impedía agregar un contenedor a la cuenta de almacenamiento. Una vez que se cambió el tipo de bloqueo (podría haberla quitado en su lugar), pudo agregar un contenedor.</p>
+
+    <h3>Tarea 5: Eliminación de la cuenta de almacenamiento</h3>
+    <p>
+        En realidad, hará esta última tarea dos veces. Recuerde que hay un bloqueo de eliminación en la cuenta de almacenamiento, por lo que aún no podrá eliminar la cuenta de almacenamiento.
+    </p>
+
+    <ol>
+        <li>Desplácese hacia arriba hasta que encuentre Información general en la parte superior del panel de la izquierda de la pantalla.</li>
+
+        <li>Seleccione Información general.</li>
+
+        <li>Seleccione Eliminar.</li>
+
+        <img src="./img/9/7.png" alt="" style="width: 30%;">
+    </ol>
+    <p>
+        Debería recibir una notificación que le informa de que no puede eliminar el recurso porque tiene un bloqueo de eliminación. Para eliminar la cuenta de almacenamiento, deberá quitar el bloqueo de eliminación.
+    </p>
+    <img src="./img/9/8.png" alt="" style="width: 30%;">
+
+    <h3>Tarea 6: Eliminación del bloqueo de eliminación y eliminación de la cuenta de almacenamiento</h3>
+
+    <p>
+        En la tarea final, quitará el bloqueo de recursos y eliminará la cuenta de almacenamiento de la cuenta de Azure. Este paso es importante. Querrá asegurarse de que no tiene ningún recurso inactivo en su cuenta.
+    </p>
+
+    <ol>
+        <li>Seleccione el nombre de la cuenta de almacenamiento en la ruta de navegación de la parte superior de la pantalla.</li>
+
+        <li>Desplácese hacia abajo hasta que encuentre la sección Configuración del panel de la izquierda de la pantalla.</li>
+
+        <li>Seleccione Bloqueos.</li>
+
+        <li>Seleccione Eliminar.</li>
+
+        <li>Seleccione Inicio en la ruta de navegación de la parte superior de la pantalla.</li>
+
+        <li>Seleccione Cuentas de almacenamiento.</li>
+
+        <li>Seleccione la cuenta de almacenamiento que usó para este ejercicio.</li>
+
+        <li>Seleccione Eliminar.</li>
+
+        <li>Para evitar la eliminación accidental, Azure le pide que escriba el nombre de la cuenta de almacenamiento que quiere eliminar. Escriba el nombre de la cuenta de almacenamiento y seleccione Eliminar.</li>
+        
+        <img src="./img/9/9.png" alt="" style="width: 30%;">
+        
+        <li>Deberá recibir un mensaje que indica que se eliminó la cuenta de almacenamiento. Si va a Inicio > Cuentas de almacenamiento, debería ver que la cuenta de almacenamiento que creó para este ejercicio ha desaparecido.</li>
+    </ol>
+
+    <p>¡Enhorabuena! Ha completado la configuración, actualización y eliminación de un bloqueo de recursos en un recurso de Azure.</p>
+
+    <pre>
+        Importante
+
+        Asegúrese de completar la tarea 6, la eliminación de la cuenta de almacenamiento. 
+        Usted es el único responsable de los recursos de su cuenta de Azure. Asegúrese de 
+        limpiar la cuenta después de completar este ejercicio.
+    </pre>
+
+    <h2>Descripción de las ventajas del portal de confianza de servicios</h2>
+    <p>
+        El Portal de confianza de servicios de Microsoft es un portal que proporciona contenido, herramientas y otros recursos sobre las prácticas de seguridad, privacidad y cumplimiento de Microsoft.
+
+El Portal de confianza de servicios contiene detalles sobre la implementación de controles y procesos de Microsoft que protegen nuestros servicios en la nube y los datos de los clientes que contienen. Para acceder a algunos de los recursos del Portal de confianza de servicios, debe iniciar sesión con un usuario autenticado con su cuenta de Servicios en la nube de Microsoft (cuenta de organización de Microsoft Entra). Deberá revisar y aceptar el acuerdo de no divulgación de Microsoft para acceder a los materiales de cumplimiento.
+
+    </p>
+
+    <h3>Acceso al Portal de confianza de servicios</h3>
+    <p>Puede acceder al Portal de confianza de servicios en https://servicetrust.microsoft.com/.</p>
+
+    <img src="./img/9/10.png" alt="" style="width: 30%;">
+
+    <p>
+        Las características y el contenido del Portal de confianza de servicios son accesibles desde el menú principal. Las categorías del menú principal son:
+    </p>
+
+    <ul>
+
+        <li>El Portal de confianza de servicios proporciona un hipervínculo de acceso rápido para volver a la página principal del Portal de confianza de servicios.</li>
+        <li>Mi biblioteca le permite guardar (o fijar) documentos para acceder rápidamente a ellos en la página Mi biblioteca. También puede establecer una configuración para recibir notificaciones cuando se actualicen los documentos en Mi biblioteca.</li>
+        <li>Todos los documentos es un único lugar de aterrizaje para documentos del portal de confianza de servicios. En Todos los documentos se pueden anclar documentos para que aparezcan en Mi biblioteca.</li>
+    </ul>
+
+    <pre>
+        Nota
+
+        Los informes y documentos del Portal de confianza de servicios están disponibles para 
+        descargarse durante al menos 12 meses después de la publicación o hasta que haya disponible una nueva versión del 
+        documento.
+    </pre>
+
+    <img src="./img/9/11.JPG" alt="">
+</body>
+</html>
